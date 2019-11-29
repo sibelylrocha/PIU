@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	
+	<h:form>		
+		<fieldset>
+			<legend>Dados da Empresa</legend>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel for="UserName" value="UserName: "/>
+				<h:inputText id="UserName" value="#{EmpresaBean.Empresa.UserName}"/>
+				
+				<h:outputLabel for="Password" value="Password: "/>
+				<h:inputText id="Password" value="#{EmpresaBean.Empresa.Password}"/>
+				
+				<h:outputLabel for="Nome" value="Nome: "/>
+				<h:inputSecret id="Nome" value="#{EmpresaBean.Empresa.Nome}"/>
+				
+				<h:outputLabel for="Telefone" value="Telefone: "/>
+				<h:inputText id="Telefone" value="#{EmpresaBean.Empresa.Telefone}"/>
+				
+				<h:outputLabel for="Cnpj" value="Cnpj: "/>
+				<h:inputText id="Cnpj" value="#{EmpresaBean.Empresa.Cnpj}"/>
+				
+				
+				<h:commandButton actionListener="#{EmpresaBean.salvar}" value="Salvar"/>
+			</h:panelGrid>	
+		</fieldset>
+	
+	</h:form>
+
+</body>
+
+</html>

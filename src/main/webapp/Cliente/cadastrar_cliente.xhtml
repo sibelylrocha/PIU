@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	
+	<h:form>		
+		<fieldset>
+			<legend>Dados do Cliente</legend>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel for="Telefone" value="Telefone: "/>
+				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}"/>
+				
+				<h:outputLabel for="Nome" value="Nome: "/>
+				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}"/>
+				
+				<h:outputLabel for="Endereco" value="Endereco: "/>
+				<h:inputSecret id="Endereco" value="#{clienteBean.cliente.endereco}"/>
+				
+				<h:outputLabel for="Cpf" value="Cpf: "/>
+				<h:inputSecret id="Cpf" value="#{clienteBean.cliente.cpf}"/>
+				
+				<h:outputLabel for="Id" value="Id: "/>
+				<h:inputText id="Id" value="#{clienteBean.cliente.id}"/>
+				
+				<h:commandButton actionListener="#{clienteBean.salvar}" value="Salvar"/>
+			</h:panelGrid>	
+		</fieldset>
+	
+	</h:form>
+
+</body>
+
+</html>

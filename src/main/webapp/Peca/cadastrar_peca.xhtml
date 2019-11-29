@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<body>
+	
+	<h:form>		
+		<fieldset>
+			<legend>Dados da Peca</legend>
+			
+			<h:panelGrid columns="2">
+				<h:outputLabel for="Descricao" value="Descricao: "/>
+				<h:inputText id="Descricao" value="#{PecaBean.Peca.Descricao}"/>
+				
+				<h:outputLabel for="Valor" value="Valor: "/>
+				<h:inputText id="Valor" value="#{PecaBean.Peca.Valor}"/>
+				
+				<h:outputLabel for="Quantidade" value="Quantidade: "/>
+				<h:inputSecret id="Quantidade" value="#{PecaBean.Peca.Quantidade}"/>
+				
+				<h:outputLabel for="Marca" value="Marca: "/>
+				<h:inputText id="Marca" value="#{PecaBean.Peca.Marca}"/>
+				
+				<h:outputLabel for="Id" value="Id: "/>
+				<h:inputText id="Id" value="#{PecaBean.Peca.Id}"/>
+				
+				
+				<h:commandButton actionListener="#{PecaBean.salvar}" value="Salvar"/>
+			</h:panelGrid>	
+		</fieldset>
+	
+	</h:form>
+
+</body>
+
+</html>
