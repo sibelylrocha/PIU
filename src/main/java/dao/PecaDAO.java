@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -30,18 +31,23 @@ public class PecaDAO implements Serializable{
 		this.dao = new DAO<Peca>(manager, Peca.class);
 	}
 
+	@PostConstruct
+	private void initDao() {
+		this.dao = new DAO<Peca>(manager, Peca.class);
+	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Peca Cadastrar(Peca t) {
-		return dao.Cadastrar(t);
+	public void Cadastrar(Peca t) {
+		dao.Cadastrar(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Remove(Peca t) {
+	public void Remove(Peca t) throws Exception{
 		dao.Excluir(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Peca atualiza(Peca t) {
+	public Peca atualiza(Peca t) throws Exception{
 		return dao.atualizar(t);
 	}
 	

@@ -3,6 +3,8 @@ package controller;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,7 +27,12 @@ public class EmpresaBean implements Serializable{
 	public EmpresaBean() {}
 	
 	public void salvar() throws ValidacaoException {
-		emService.cadastarEmpresa(empresa);
+		try{
+			emService.cadastarEmpresa(empresa);
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
+		}catch(ValidacaoException v){
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
+		}
 	}
 
 	public Empresa getEmpresa() {

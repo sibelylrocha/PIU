@@ -1,29 +1,31 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <body>
-	
+		<h:head>Eletronica do Alexandre</h:head>
+		
 	<h:form>		
 		<fieldset>
 			<legend>Dados da Produto</legend>
 			
-			<h:panelGrid columns="1">
+			<h:panelGrid columns="2">
 				<h:outputLabel for="Tipo" value="Tipo: "/>
-				<h:inputText id="Tipo" value="#{ProdutoBean.Produto.Tipo}"/>
+				<h:inputText id="Tipo" value="#{produtoBean.produto.tipo}"/>
 				
 				<h:outputLabel for="Descricao" value="Descricao: "/>
-				<h:inputText id="Descricao" value="#{ProdutoBean.Produto.Descricao}"/>
+				<h:inputText id="Descricao" value="#{produtoBean.produto.descricao}"/>
 				
 				<h:outputLabel for="Marca" value="Marca: "/>
-				<h:inputSecret id="Marca" value="#{ProdutoBean.Produto.Marca}"/>
+				<h:inputText id="Marca" value="#{produtoBean.produto.marca}"/>
 				
 				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{ProdutoBean.Produto.Id}"/>
+				<h:inputText id="Id" value="#{produtoBean.produto.id}"/>
 				
 				
-				<h:commandButton actionListener="#{ProdutoBean.salvar}" value="Salvar"/>
+				<h:commandButton actionListener="#{produtoBean.salvar}" value="Salvar"/>
 			</h:panelGrid>	
 		</fieldset>
 	

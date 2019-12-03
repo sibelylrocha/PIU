@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -27,14 +28,19 @@ public class VendaDAO implements Serializable{
 	public VendaDAO(EntityManager manager){
 		this.dao = new DAO<Venda>(manager, Venda.class);
 	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Venda Cadastrar(Venda t) {
-		return dao.Cadastrar(t);
+	
+	@PostConstruct
+	private void initDao() {
+		this.dao = new DAO<Venda>(manager, Venda.class);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Excluir(Venda t) {
+	public void Cadastrar(Venda t) {
+		dao.Cadastrar(t);
+	}
+
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void Excluir(Venda t) throws Exception{
 		dao.Excluir(t);;
 	}
 
@@ -49,7 +55,7 @@ public class VendaDAO implements Serializable{
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Venda Atualiza(Venda t) {
+	public Venda Atualiza(Venda t) throws Exception{
 		return dao.atualizar(t);
 	}
 	public void close() {

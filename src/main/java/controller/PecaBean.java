@@ -3,6 +3,8 @@ package controller;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -26,7 +28,12 @@ private static final long serialVersionUID = 1L;
 	public PecaBean() {}
 	
 	public void salvar() throws ValidacaoException {
-		pcService.cadastarPeca(peca);
+		try{
+			pcService.cadastarPeca(peca);
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
+		}catch(ValidacaoException v){
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
+		}
 	}
 
 	public Peca getPeca() {

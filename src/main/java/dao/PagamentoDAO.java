@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -28,19 +29,24 @@ public class PagamentoDAO implements Serializable{
 		public PagamentoDAO(EntityManager manager){
 			this.dao = new DAO<Pagamento>(manager, Pagamento.class);
 		}
-
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public Pagamento Cadastrar(Pagamento t) {
-			return dao.Cadastrar(t);
+		
+		@PostConstruct
+		private void initDao() {
+			this.dao = new DAO<Pagamento>(manager, Pagamento.class);
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Excluir(Pagamento t) {
+		public void Cadastrar(Pagamento t) {
+			dao.Cadastrar(t);
+		}
+
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public void Excluir(Pagamento t) throws Exception{
 			dao.Excluir(t);;
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public Pagamento Atualiza(Pagamento t) {
+		public Pagamento Atualiza(Pagamento t) throws Exception{
 			return dao.atualizar(t);
 		}
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)

@@ -3,6 +3,8 @@ package controller;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,10 +27,7 @@ public class ClienteBean implements Serializable{
 	
 	public ClienteBean() {}
 	
-	public void salvar() throws ValidacaoException {
-		clService.cadastarCliente(cliente);
-	}
-
+	
 	public Cliente getCliente() {
 		return cliente;
 	}
@@ -41,11 +40,19 @@ public class ClienteBean implements Serializable{
 		return clService;
 	}
 
-	public void setClService(ClienteService clService) {
-		this.clService = clService;
+	public void salvar() {
+	clService.cadastarCliente(cliente);
+	}
+	public void excluir() throws Exception {
+		try{
+			clService.removerCliente(cliente);
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removido Com Sucesso!"));
+		}catch(ValidacaoException v){
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro ao ser Removido"));
+		}
+		
+		
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+
 }

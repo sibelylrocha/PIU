@@ -96,14 +96,14 @@ private static final long serialVersionUID = 4260572209856089896L;
 	@Path("{Cnpj}")
 	@PUT
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void trocaEmpresa(@PathParam("Cnpj") String Cnpj, Empresa empresa) {
+	public void trocaEmpresa(@PathParam("Cnpj") String Cnpj, Empresa empresa) throws Exception{
 		emService.trocaEmpresa(Cnpj, empresa);
 	}
 	
 	@Path("{Cnpj}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaEmpresa(@PathParam("Cnpj") String Cnpj, Empresa empresa) {
+	public void atualizaEmpresa(@PathParam("Cnpj") String Cnpj, Empresa empresa) throws Exception{
 		emService.atualizarEmpresa(empresa);
 	}
 }

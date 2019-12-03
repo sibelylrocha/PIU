@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -30,19 +31,24 @@ public class EmpresaDAO implements Serializable{
 	public EmpresaDAO(EntityManager manager){
 		this.dao = new DAO<Empresa>(manager, Empresa.class);
 	}
+	
+	@PostConstruct
+	private void initDao() {
+		this.dao = new DAO<Empresa>(manager, Empresa.class);
+	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Empresa Cadastrar(Empresa t) {
-		return dao.Cadastrar(t);
+	public void Cadastrar(Empresa t) {
+		 dao.Cadastrar(t);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Remove(Empresa t) {
+	public void Remove(Empresa t) throws Exception{
 		dao.Excluir(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Empresa atualiza(Empresa t) {
+	public Empresa atualiza(Empresa t) throws Exception{
 		return dao.atualizar(t);
 	}
 

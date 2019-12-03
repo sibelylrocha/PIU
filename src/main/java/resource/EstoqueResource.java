@@ -68,7 +68,7 @@ private static final long serialVersionUID = 4260572209856089896L;
 	@Path("{Id}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaEstoque(@PathParam("Id") Integer Id, Estoque estoque) {
+	public void atualizaEstoque(@PathParam("Id") Integer Id, Estoque estoque) throws Exception{
 		etService.atualizarEstoque(estoque);
 	}
 }

@@ -3,12 +3,12 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 
 import modelo.Cliente;
 
@@ -18,32 +18,34 @@ import modelo.Cliente;
 public class ClienteDAO implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
-	private DAO<Cliente> dao;
-	
 	@PersistenceContext(unitName = "Projeto")
 	private EntityManager manager;
 	
+	private DAO<Cliente> dao;
 	
-	public ClienteDAO() {
-	
+	public ClienteDAO() {}
+
+	public void ClienteDAO(EntityManager manager){
+		dao = new DAO<Cliente>(manager, Cliente.class);
 	}
 
-	public ClienteDAO(EntityManager manager){
+	@PostConstruct
+	private void initDao() {
 		this.dao = new DAO<Cliente>(manager, Cliente.class);
 	}
-
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Cliente Cadastrar(Cliente cliente) {
-		return dao.Cadastrar(cliente);
+	public void Cadastrar(Cliente t) {
+		dao.Cadastrar(t);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Remove(Cliente t) {
-		dao.Excluir(t);
+	public void Remove(Cliente cliente) throws Exception{
+		dao.Excluir(cliente);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Cliente atualiza(Cliente t) {
+	public Cliente atualiza(Cliente t) throws Exception{
 		return dao.atualizar(t);
 	}
 
@@ -57,18 +59,10 @@ public class ClienteDAO implements Serializable{
 		return dao.ConsultarClientePorCpf(Cpf);
 	}
 	
+
 	public void close() {
 		this.dao.close();
 	}
-	public boolean removePorId(Integer Id) {
-		String hql = "DELETE FROM Cliente WHERE Id = :Id";
-		Query query = manager.createQuery(hql);
-		query.setParameter("Id", Id);
-		int modificados = query.executeUpdate();
-		if(modificados > 0) return true;
-		else return false;
-	}
-
 	public void comitarCache() {
 		dao.comitarCache();
 	}

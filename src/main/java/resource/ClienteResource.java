@@ -60,42 +60,10 @@ public class ClienteResource implements Serializable{
 		}	
 	}
 	
-	@POST
-	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_JSON)
-	public Response insereCliente(Cliente cliente){
-		try {
-			clService.cadastarCliente(cliente);
-			URI uri = URI.create("/clientes/" + cliente.getId());
-			return Response.created(uri).build();
-			
-		}catch(ValidacaoException ev) {
-			return Response.status(422).entity(ev.getViolacoes()).build();
-		}catch(Exception e) {
-			return Response.status(Status.CONFLICT).build();
-		}
-	}
-	
-	@Path("{Id}")
-	@DELETE
-	public Response deleteUsuario(@PathParam("Id") Integer Id) {
-		try {
-			boolean success = clService.removerCliente(Id);
-			
-			if(success)
-				return Response.ok().build();
-			else
-				return Response.status(Status.NOT_FOUND).build();
-				
-		}catch (Exception e) {
-			return Response.status(Status.CONFLICT).build();
-		}
-	}
-	
 	@Path("{Id}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaCliente(@PathParam("Id") Integer Id, Cliente cliente) {
+	public void atualizaCliente(@PathParam("Id") Integer Id, Cliente cliente) throws Exception{
 		clService.atualizarCliente(cliente);
 	}
 }

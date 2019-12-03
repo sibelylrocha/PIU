@@ -89,7 +89,7 @@ private static final long serialVersionUID = 4260572209856089896L;
 	@Path("{Protocolo}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaProblemaRelatado(@PathParam("Protocolo") Integer Protocolo, ProblemaRelatado problemarelatado) {
+	public void atualizaProblemaRelatado(@PathParam("Protocolo") Integer Protocolo, ProblemaRelatado problemarelatado) throws Exception{
 		pbService.atualizarProblemaRelatado(problemarelatado);
 	}
 }

@@ -43,7 +43,7 @@ public class VendaService implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarUsuario(Venda venda) {
+	public void atualizarUsuario(Venda venda) throws Exception{
 		dao.Atualiza(venda);
 	}
 }

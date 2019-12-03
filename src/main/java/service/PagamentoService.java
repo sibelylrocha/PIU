@@ -43,7 +43,7 @@ public class PagamentoService implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarPagamento(Pagamento pagamento) {
+	public void atualizarPagamento(Pagamento pagamento) throws Exception{
 		dao.Atualiza(pagamento);
 	}
 }

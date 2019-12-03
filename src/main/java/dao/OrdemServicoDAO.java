@@ -3,6 +3,7 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -29,18 +30,23 @@ public class OrdemServicoDAO implements Serializable{
 			this.dao = new DAO<OrdemServico>(manager, OrdemServico.class);
 		}
 
+		@PostConstruct
+		private void initDao() {
+			this.dao = new DAO<OrdemServico>(manager, OrdemServico.class);
+		}
+		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public OrdemServico Cadastrar(OrdemServico t) {
-			return dao.Cadastrar(t);
+		public void Cadastrar(OrdemServico t) {
+			dao.Cadastrar(t);
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Excluir(OrdemServico t) {
+		public void Excluir(OrdemServico t) throws Exception{
 			dao.Excluir(t);;
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public OrdemServico Atualiza(OrdemServico t) {
+		public OrdemServico Atualiza(OrdemServico t) throws Exception{
 			return dao.atualizar(t);
 		}
 		

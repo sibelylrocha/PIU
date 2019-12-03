@@ -78,12 +78,12 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarEmpresa(Empresa empresa) {
+	public void atualizarEmpresa(Empresa empresa) throws Exception{
 		dao.atualiza(empresa);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void trocaEmpresa(String Cnpj, Empresa empresa) {
+	public void trocaEmpresa(String Cnpj, Empresa empresa) throws Exception{
 		empresa.setCnpj(Cnpj);;
 		dao.atualiza(empresa);
 		dao.comitarCache();

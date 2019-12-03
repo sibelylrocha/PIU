@@ -1,5 +1,7 @@
 package exception;
 
+
+
 import javax.ejb.ApplicationException;
 
 import dto.ViolacoesValidacao;

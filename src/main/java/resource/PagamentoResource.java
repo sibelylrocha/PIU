@@ -95,7 +95,7 @@ private static final long serialVersionUID = 4260572209856089896L;
 	@Path("{Id}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaPagamento(@PathParam("Id") Integer Id, Pagamento pagamento) {
+	public void atualizaPagamento(@PathParam("Id") Integer Id, Pagamento pagamento) throws Exception{
 		pgService.atualizarPagamento(pagamento);
 	}
 }

@@ -34,7 +34,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarEstoque(Estoque estoque) {
+	public void atualizarEstoque(Estoque estoque) throws Exception{
 		dao.Atualiza(estoque);
 	}
 }

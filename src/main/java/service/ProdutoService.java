@@ -37,7 +37,7 @@ private static final long serialVersionUID = 1L;
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarUsuario(Produto produto) {
+	public void atualizarUsuario(Produto produto) throws Exception{
 		dao.Atualiza(produto);
 	}
 	

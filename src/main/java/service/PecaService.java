@@ -43,7 +43,7 @@ public class PecaService implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarPeca(Peca peca) {
+	public void atualizarPeca(Peca peca) throws Exception{
 		dao.atualiza(peca);
 	}
 }

@@ -18,24 +18,16 @@ public class DAO<T> implements Serializable {
 		this.classe = classe;
 	}
 
-	public T Cadastrar(T t) {
-		em.getTransaction().begin();
-		try{
-			em.persist(t);
-			em.getTransaction().commit();
-			return t;
-		}catch(RuntimeException e){
-			em.getTransaction().rollback();
-			throw e;
-		}
+	public void Cadastrar(T t) {
+		em.persist(t);
 	}
 
-	public void Excluir(T t) {
+	public void Excluir(T t) throws Exception {
 		em.getTransaction().begin();
 		try{
 			em.remove(em.merge(t));
 			em.getTransaction().commit();
-		}catch(RuntimeException e){
+		}catch(Exception e){
 			em.getTransaction().rollback();
 			throw e;
 		}
@@ -44,7 +36,7 @@ public class DAO<T> implements Serializable {
 		em.flush();
 	}
 	
-	public T atualizar(T t) {
+	public T atualizar(T t) throws Exception {
 		em.getTransaction().begin();
 		try{
 	
@@ -52,7 +44,7 @@ public class DAO<T> implements Serializable {
 			T merge = em.merge(t);
 			em.getTransaction().commit();
 			return merge;
-		}catch(RuntimeException e){
+		}catch(Exception e){
 			em.getTransaction().rollback();
 			throw e;
 		}
@@ -116,6 +108,10 @@ public class DAO<T> implements Serializable {
 				.setMaxResults(maxResults).getResultList();
 
 		return lista;
+	}
+	public T buscaPorId(Integer Id) {
+		T instancia = em.find(classe, Id);
+		return instancia;
 	}
 	
 	public void close(){

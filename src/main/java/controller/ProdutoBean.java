@@ -3,6 +3,8 @@ package controller;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -25,7 +27,12 @@ public class ProdutoBean implements Serializable{
 	public ProdutoBean() {}
 	
 	public void salvar() throws ValidacaoException {
-		pdService.cadastarProduto(produto);
+		try{
+			pdService.cadastarProduto(produto);
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
+		}catch(ValidacaoException v){
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
+		}
 	}
 
 	public Produto getProduto() {

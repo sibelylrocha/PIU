@@ -2,6 +2,8 @@ package controller;
 
 import java.io.Serializable;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 
 import exception.ValidacaoException;
@@ -21,7 +23,12 @@ private static final long serialVersionUID = 1L;
 	public VendaBean() {}
 	
 	public void salvar() throws ValidacaoException {
-		vdService.cadastarVenda(venda);
+		try{
+			vdService.cadastarVenda(venda);
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
+		}catch(ValidacaoException v){
+		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
+		}
 	}
 
 	public Venda getVenda() {

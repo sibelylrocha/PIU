@@ -46,7 +46,7 @@ public class ProblemaRelatadoService implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarProblemaRelatado(ProblemaRelatado problemarelatado) {
+	public void atualizarProblemaRelatado(ProblemaRelatado problemarelatado) throws Exception{
 		dao.Atualiza(problemarelatado);
 	}
 }

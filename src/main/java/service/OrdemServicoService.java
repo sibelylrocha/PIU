@@ -44,7 +44,7 @@ public class OrdemServicoService implements Serializable{
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarOrdemServico(OrdemServico ordemservico) {
+	public void atualizarOrdemServico(OrdemServico ordemservico) throws Exception{
 		dao.Atualiza(ordemservico);
 	}
 }

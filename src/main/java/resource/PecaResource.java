@@ -95,7 +95,7 @@ private static final long serialVersionUID = 4260572209856089896L;
 	@Path("{Id}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaPeca(@PathParam("Id") Integer Id, Peca peca) {
+	public void atualizaPeca(@PathParam("Id") Integer Id, Peca peca) throws Exception{
 		pcService.atualizarPeca(peca);
 	}
 }

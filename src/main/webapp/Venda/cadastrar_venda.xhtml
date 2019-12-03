@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <body>
-	
+		<h:head>Eletronica do Alexandre</h:head>
+		
 	<h:form>		
 		<fieldset>
 			<legend>Dados da Venda</legend>
@@ -12,18 +14,18 @@
 			<h:panelGrid columns="2">
 			
 				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{PecaBean.Peca.Id}"/>
+				<h:inputText id="Id" value="#{vendaBean.venda.id}"/>
 				
 				<h:outputLabel for="Data" value="Data: "/>
-				<h:inputText id="Data" value="#{VendaBean.Venda.Data}"/>
+				<h:inputText id="Data" value="#{vendaBean.venda.data}"/>
 				
 				<h:outputLabel for="Hora" value="Hora: "/>
-				<h:inputSecret id="Hora" value="#{VendaBean.Venda.Hora}"/>
+				<h:inputText id="Hora" value="#{vendaBean.venda.hora}"/>
 				
 				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{VendaBean.Venda.Valor}"/>
+				<h:inputText id="Valor" value="#{vendaBean.venda.valor}"/>
 				
-				<h:commandButton actionListener="#{VendaBean.salvar}" value="Salvar"/>
+				<h:commandButton actionListener="#{vendaBean.salvar}" value="Salvar"/>
 			</h:panelGrid>	
 		</fieldset>
 	

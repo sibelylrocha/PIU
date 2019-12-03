@@ -95,7 +95,7 @@ public class ProdutoResource implements Serializable {
 	@Path("{Id}")
 	@PATCH
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void atualizaProduto(@PathParam("Id") Integer Id, Produto produto) {
+	public void atualizaProduto(@PathParam("Id") Integer Id, Produto produto) throws Exception{
 		pdService.atualizarUsuario(produto);
 	}
 }

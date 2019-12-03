@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
 
 <body>
+	
+	<h:head>Eletronica do Alexandre</h:head>
 	
 	<h:form>		
 		<fieldset>
@@ -11,22 +14,22 @@
 			
 			<h:panelGrid columns="2">
 				<h:outputLabel for="Descricao" value="Descricao: "/>
-				<h:inputText id="Descricao" value="#{PecaBean.Peca.Descricao}"/>
+				<h:inputText id="Descricao" value="#{pecaBean.peca.descricao}"/>
 				
 				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{PecaBean.Peca.Valor}"/>
+				<h:inputText id="Valor" value="#{pecaBean.peca.valor}"/>
 				
 				<h:outputLabel for="Quantidade" value="Quantidade: "/>
-				<h:inputSecret id="Quantidade" value="#{PecaBean.Peca.Quantidade}"/>
+				<h:inputText id="Quantidade" value="#{pecaBean.peca.quantidade}"/>
 				
 				<h:outputLabel for="Marca" value="Marca: "/>
-				<h:inputText id="Marca" value="#{PecaBean.Peca.Marca}"/>
+				<h:inputText id="Marca" value="#{PecaBean.peca.marca}"/>
 				
 				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{PecaBean.Peca.Id}"/>
+				<h:inputText id="Id" value="#{pecaBean.peca.id}"/>
 				
 				
-				<h:commandButton actionListener="#{PecaBean.salvar}" value="Salvar"/>
+				<h:commandButton actionListener="#{pecaBean.salvar}" value="Salvar"/>
 			</h:panelGrid>	
 		</fieldset>
 	

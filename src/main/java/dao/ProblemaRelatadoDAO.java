@@ -3,13 +3,13 @@ package dao;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import modelo.ProblemaRelatado;
 
 @Stateless
@@ -29,19 +29,24 @@ public class ProblemaRelatadoDAO implements Serializable{
 		public ProblemaRelatadoDAO(EntityManager manager){
 			dao = new DAO<ProblemaRelatado>(manager, ProblemaRelatado.class);
 		}
+		
+		@PostConstruct
+		private void initDao() {
+			this.dao = new DAO<ProblemaRelatado>(manager, ProblemaRelatado.class);
+		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public ProblemaRelatado Cadastrar(ProblemaRelatado t) {
-			return dao.Cadastrar(t);
+		public void Cadastrar(ProblemaRelatado t) {
+			dao.Cadastrar(t);
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public ProblemaRelatado Atualiza(ProblemaRelatado t) {
+		public ProblemaRelatado Atualiza(ProblemaRelatado t) throws Exception{
 			return dao.atualizar(t);
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Remove(ProblemaRelatado t) {
+		public void Remove(ProblemaRelatado t) throws Exception{
 			dao.Excluir(t);
 		}
 		
