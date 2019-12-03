@@ -119,4 +119,10 @@ public class Cliente implements Serializable {
 		this.Endereco = Endereco;
 	}
 
+	@Override
+	public String toString() {
+		return "Cliente [Telefone=" + Telefone + ", Nome=" + Nome + ", Endereco=" + Endereco + ", Cpf=" + Cpf + ", Id="
+				+ Id + "]";
+	}
+
 }

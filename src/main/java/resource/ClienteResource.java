@@ -6,6 +6,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
+import javax.faces.validator.ValidatorException;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -21,6 +22,7 @@ import javax.ws.rs.core.Response.Status;
 
 import exception.ValidacaoException;
 import modelo.Cliente;
+import modelo.Empresa;
 import service.ClienteService;
 
 @Stateless
@@ -40,6 +42,22 @@ public class ClienteResource implements Serializable{
 	public List<Cliente> listaClientes() {
 		List<Cliente> Clientes = clService.listarClientes();
 		return Clientes;
+	}
+	
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response insereCliente(Cliente cliente)throws ValidatorException{
+		try {
+			clService.cadastarCliente(cliente);
+			URI uri = URI.create("/cliente/" + cliente.getCpf());
+			return Response.created(uri).build();
+			
+		}catch(ValidacaoException ev) {
+			return Response.status(422).entity(ev.getViolacoes()).build();
+		}catch(Exception e) {
+			return Response.status(Status.CONFLICT).build();
+		}
 	}
 	
 	

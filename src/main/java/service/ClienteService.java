@@ -30,7 +30,7 @@ public class ClienteService implements Serializable{
 		public ClienteService() {}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void cadastarCliente(Cliente cliente) {
+		public void cadastarCliente(Cliente cliente) throws ValidacaoException{
 			dao.Cadastrar(cliente);
 		}
 
@@ -54,7 +54,7 @@ public class ClienteService implements Serializable{
 			dao.atualiza(cliente);
 		}
 		
-		public void validaUsuario(Cliente cliente) throws ValidacaoException {
+		public void validaCliente(Cliente cliente) throws ValidacaoException {
 			ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 			Validator validator = factory.getValidator();
 			

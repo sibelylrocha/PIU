@@ -40,8 +40,11 @@ public class ClienteBean implements Serializable{
 		return clService;
 	}
 
-	public void salvar() {
+	public void salvar() throws ValidacaoException{
+		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(cliente.toString()));
+		cliente.toString();
 	clService.cadastarCliente(cliente);
+	 
 	}
 	public void excluir() throws Exception {
 		try{

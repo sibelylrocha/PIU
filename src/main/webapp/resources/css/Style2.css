@@ -1,0 +1,16 @@
+body {
+		margin: auto;
+		width: 95%;
+		background: url(fundo.jpg) center;
+		color: #ffffff;
+		text-align: center;
+}
+.head {
+	width: 95%;
+	margin: auto;
+	text-align: center;
+}
+
+painel{
+	background-color: red;
+}
