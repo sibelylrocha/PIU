@@ -14,12 +14,12 @@
 <center>
 	<fieldset>
 			<h:form>
-			<p:panel header="Cadastrar Cliente">
+			<p:panel header="Remover Empresa">
 			<p:panelGrid columns="2">
-				<h:outputLabel for="Id" value="Id: " />
-				<h:inputText id="Id" value="#{clienteBean.cliente.id}" size="50"/>
+				<h:outputLabel for="Cnpj" value="Cnpj: " />
+				<h:inputText id="Cnpj" value="#{empresaBean.empresa.cnpj}" size="50"/>
 
-			<h:commandButton value="Remover" actionListener="#{clienteBean.excluir}" styleClass="myButton"/>
+			<h:commandButton value="Remover" actionListener="#{empresaBean.excluir}" styleClass="myButton"/>
 			
 			
 			

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
-
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -13,7 +12,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
 import dao.ClienteDAO;
 import dto.ViolacoesValidacao;
 import exception.ValidacaoException;
@@ -43,15 +41,23 @@ public class ClienteService implements Serializable{
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void removerCliente(Cliente cliente) throws Exception{
-			dao.Remove(cliente);
+		public boolean removerCliente(Integer Id) {
+			boolean resultado = dao.removePorId(Id);
 			dao.comitarCache();
-		
+			return resultado;
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public void atualizarCliente(Cliente cliente) throws Exception{
 			dao.atualiza(cliente);
+		}
+		
+		@TransactionAttribute(TransactionAttributeType.REQUIRED)
+		public void atualizarUsuario(Integer Id, Cliente cliente) throws Exception {
+			Cliente clienteDoBanco = dao.BuscaPorId(Id);
+			clienteDoBanco.atualizarCampos(cliente);
+			dao.atualiza(clienteDoBanco);
+			dao.comitarCache();
 		}
 		
 		public void validaCliente(Cliente cliente) throws ValidacaoException {

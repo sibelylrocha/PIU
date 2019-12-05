@@ -9,6 +9,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 
 import modelo.Cliente;
 
@@ -36,6 +37,7 @@ public class ClienteDAO implements Serializable{
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void Cadastrar(Cliente t) {
+		System.out.println("ola");
 		dao.Cadastrar(t);
 	}
 	
@@ -46,6 +48,7 @@ public class ClienteDAO implements Serializable{
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public Cliente atualiza(Cliente t) throws Exception{
+		
 		return dao.atualizar(t);
 	}
 
@@ -59,7 +62,21 @@ public class ClienteDAO implements Serializable{
 		return dao.ConsultarClientePorCpf(Cpf);
 	}
 	
-
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public Cliente BuscaPorId(Integer Id) {
+		return dao.buscaPorId(Id);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public boolean removePorId(Integer Id) {
+		String hql = "DELETE FROM Cliente WHERE Id = :Id";
+		Query query = manager.createQuery(hql);
+		query.setParameter("Id", Id);
+		int modificados = query.executeUpdate();
+		if(modificados > 0) return true;
+		else return false;
+	}
+	
 	public void close() {
 		this.dao.close();
 	}

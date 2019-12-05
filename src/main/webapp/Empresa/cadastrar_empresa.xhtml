@@ -3,37 +3,61 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
+	
+	<h:head>
+	<center>
+	
+		<h1>
+			<b>Eletronica do Alexandre</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+	
+	
 
 <body>
-		<h:head>Eletronica do Alexandre</h:head>
+
+<center>
+	
+	
+		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+
+
 		
 	<h:form>		
 		<fieldset>
 			<legend>Dados da Empresa</legend>
 			
+			<p:panel header="Cadastrar Empresa">
 			<h:panelGrid columns="2">
 				<h:outputLabel for="UserName" value="UserName: "/>
-				<h:inputText id="UserName" value="#{empresaBean.empresa.userName}"/>
+				<h:inputText id="UserName" value="#{empresaBean.empresa.userName}" size="50"/>
 				
 				<h:outputLabel for="Password" value="Password: "/>
-				<h:inputText id="Password" value="#{empresaBean.empresa.password}"/>
+				<h:inputText id="Password" value="#{empresaBean.empresa.password}" size="50"/>
 				
 				<h:outputLabel for="Nome" value="Nome: "/>
-				<h:inputText id="Nome" value="#{empresaBean.empresa.nome}"/>
+				<h:inputText id="Nome" value="#{empresaBean.empresa.nome}" size="50"/>
 				
 				<h:outputLabel for="Telefone" value="Telefone: "/>
-				<h:inputText id="Telefone" value="#{empresaBean.empresa.telefone}"/>
+				<h:inputText id="Telefone" value="#{empresaBean.empresa.telefone}" size="50"/>
 				
 				<h:outputLabel for="Cnpj" value="Cnpj: "/>
-				<h:inputText id="Cnpj" value="#{empresaBean.empresa.cnpj}"/>
+				<h:inputText id="Cnpj" value="#{empresaBean.empresa.cnpj}" size="50"/>
 				
 				
-				<h:commandButton actionListener="#{empresaBean.salvar}" value="Salvar"/>
+				<h:commandButton actionListener="#{empresaBean.salvar}" value="Adicionar" styleClass="myButton"/>
 			</h:panelGrid>	
+			</p:panel>
 		</fieldset>
-	
 	</h:form>
-
+	<p:graphicImage library="image" name="logo.jpg" width="300" />
+	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
+</center>
 </body>
 
 </html>

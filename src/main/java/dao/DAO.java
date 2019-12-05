@@ -19,6 +19,7 @@ public class DAO<T> implements Serializable {
 	}
 
 	public void Cadastrar(T t) {
+		System.out.println("oi");
 		em.persist(t);
 	}
 

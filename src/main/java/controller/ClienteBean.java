@@ -3,8 +3,6 @@ package controller;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -41,21 +39,20 @@ public class ClienteBean implements Serializable{
 	}
 
 	public void salvar() throws ValidacaoException{
-		FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(cliente.toString()));
-		cliente.toString();
-	clService.cadastarCliente(cliente);
-	 
-	}
-	public void excluir() throws Exception {
-		try{
-			clService.removerCliente(cliente);
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Removido Com Sucesso!"));
-		}catch(ValidacaoException v){
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro ao ser Removido"));
-		}
-		
-		
-	}
+		clService.cadastarCliente(cliente);
 
+	}
+	
+	public void excluir(Integer Id) throws Exception {
+			clService.removerCliente(Id);
+	}
+	
+	public void ListaCliente () throws Exception {
+		clService.listarClientes();
+	}
+	
+	public void AtualizarCliente (Integer Id) throws Exception {
+		clService.atualizarUsuario(Id, cliente);
+	}
 
 }

@@ -14,12 +14,12 @@
 <center>
 	<fieldset>
 			<h:form>
-			<p:panel header="Cadastrar Cliente">
+			<p:panel header="Remover Estoque">
 			<p:panelGrid columns="2">
 				<h:outputLabel for="Id" value="Id: " />
-				<h:inputText id="Id" value="#{clienteBean.cliente.id}" size="50"/>
+				<h:inputText id="Id" value="#{estoqueBean.estoque.id}" size="50"/>
 
-			<h:commandButton value="Remover" actionListener="#{clienteBean.excluir}" styleClass="myButton"/>
+			<h:commandButton value="Remover" actionListener="#{estoqueBean.excluir}" styleClass="myButton"/>
 			
 			
 			

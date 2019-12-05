@@ -4,33 +4,48 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+	<center>
+	
+		<h1>
+			<b>Eletronica do Alexandre</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+
 <body>
-		<h:head>Eletronica do Alexandre</h:head>
+		<center>
+	
+	
+		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+
 		
 	<h:form>		
 		<fieldset>
-			<legend>Dados da Produto</legend>
-			
+			<p:panel header="Cadastrar Produto">
 			<h:panelGrid columns="2">
 				<h:outputLabel for="Tipo" value="Tipo: "/>
-				<h:inputText id="Tipo" value="#{produtoBean.produto.tipo}"/>
+				<h:inputText id="Tipo" value="#{produtoBean.produto.tipo}" size="50"/>
 				
 				<h:outputLabel for="Descricao" value="Descricao: "/>
-				<h:inputText id="Descricao" value="#{produtoBean.produto.descricao}"/>
+				<h:inputText id="Descricao" value="#{produtoBean.produto.descricao}" size="50"/>
 				
 				<h:outputLabel for="Marca" value="Marca: "/>
-				<h:inputText id="Marca" value="#{produtoBean.produto.marca}"/>
-				
-				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{produtoBean.produto.id}"/>
-				
-				
-				<h:commandButton actionListener="#{produtoBean.salvar}" value="Salvar"/>
+				<h:inputText id="Marca" value="#{produtoBean.produto.marca}" size="50"/>
+			
+				<h:commandButton actionListener="#{produtoBean.salvar}" value="Adicionar" styleClass="myButton"/>
 			</h:panelGrid>	
+			</p:panel>
 		</fieldset>
 	
 	</h:form>
-
+	<p:graphicImage library="image" name="logo.jpg" width="300" />
+	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
+</center>
 </body>
 
 </html>

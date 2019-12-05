@@ -4,32 +4,49 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
+<h:head>
+	<center>
+	
+		<h1>
+			<b>Eletronica do Alexandre</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+
 <body>
-		<h:head>Eletronica do Alexandre</h:head>
+		<center>
+	
+	
+		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+
 		
 	<h:form>		
 		<fieldset>
-			<legend>Dados da Venda</legend>
+			<p:panel header="Cadastrar Venda">
 			
 			<h:panelGrid columns="2">
 			
-				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{vendaBean.venda.id}"/>
-				
 				<h:outputLabel for="Data" value="Data: "/>
-				<h:inputText id="Data" value="#{vendaBean.venda.data}"/>
+				<h:inputText id="Data" value="#{vendaBean.venda.data}" size="50"/>
 				
 				<h:outputLabel for="Hora" value="Hora: "/>
-				<h:inputText id="Hora" value="#{vendaBean.venda.hora}"/>
+				<h:inputText id="Hora" value="#{vendaBean.venda.hora}" size="50"/>
 				
 				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{vendaBean.venda.valor}"/>
+				<h:inputText id="Valor" value="#{vendaBean.venda.valor}" size="50"/>
 				
-				<h:commandButton actionListener="#{vendaBean.salvar}" value="Salvar"/>
+				<h:commandButton actionListener="#{vendaBean.salvar}" value="Adicionar" styleClass="myButton"/>
 			</h:panelGrid>	
+			</p:panel>
 		</fieldset>
+	</h:form><p:graphicImage library="image" name="logo.jpg" width="300" />
+	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
+</center>
 	
-	</h:form>
 
 </body>
 

@@ -5,26 +5,32 @@
 		xmlns:p="http://primefaces.org/ui">
 		
 	<h:head>
-		<center>
-			<h1>Eletronica do Alexandre</h1>
-		</center>
-	</h:head>
+	<center>
+	
+		<h1>
+			<b>Eletronica do Alexandre</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
 
 <h:body>
-<center>
+	
+	<center>
+	<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+
 	<fieldset>
 			<h:form>
-			<p:panel header="Cadastrar Cliente">
+			<p:panel header="Lista Ordem Serviço">
 			<p:panelGrid columns="2">
-				<h:outputLabel for="Id" value="Id: " />
-				<h:inputText id="Id" value="#{clienteBean.cliente.id}" size="50"/>
 
-			<h:commandButton value="Remover" actionListener="#{clienteBean.excluir}" styleClass="myButton"/>
+			<h:commandButton value="Lista Ordem Serviço" actionListener="#{ordemServicoBean.ListaCliente}" styleClass="myButton"/>
 			
-			
-			
-			</p:panelGrid>
-			</p:panel>		
+			</p:panelGrid>	
+			</p:panel>	
 		</h:form>
 	</fieldset>
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
