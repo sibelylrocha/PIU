@@ -1,6 +1,8 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
@@ -9,6 +11,7 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import exception.ValidacaoException;
+import modelo.Cliente;
 import modelo.Empresa;
 import service.EmpresaService;
 
@@ -23,6 +26,7 @@ public class EmpresaBean implements Serializable{
 	
 	@Inject
 	private EmpresaService emService;
+	private List<Empresa> lista = new ArrayList<Empresa>();
 	
 	public EmpresaBean() {}
 	
@@ -33,6 +37,14 @@ public class EmpresaBean implements Serializable{
 		}catch(ValidacaoException v){
 		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
 		}
+	}
+
+	public List<Empresa> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Empresa> lista) {
+		this.lista = lista;
 	}
 
 	public Empresa getEmpresa() {

@@ -10,7 +10,6 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-
 import modelo.Cliente;
 
 
@@ -47,13 +46,11 @@ public class ClienteDAO implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Cliente atualiza(Cliente t) throws Exception{
-		
-		return dao.atualizar(t);
+	public void atualiza(Cliente t) throws Exception{
+		dao.atualizar(t);
 	}
 
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public List<Cliente> listaTodos() {
+	public List<Cliente> listaTodosClientes() {
 		return dao.listaTodos();
 	}
 	

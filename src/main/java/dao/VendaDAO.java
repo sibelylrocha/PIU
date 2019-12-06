@@ -55,8 +55,8 @@ public class VendaDAO implements Serializable{
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Venda Atualiza(Venda t) throws Exception{
-		return dao.atualizar(t);
+	public void Atualiza(Venda t) throws Exception{
+	      dao.atualizar(t);
 	}
 	public void close() {
 		this.dao.close();

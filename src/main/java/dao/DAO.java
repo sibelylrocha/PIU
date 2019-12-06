@@ -37,26 +37,14 @@ public class DAO<T> implements Serializable {
 		em.flush();
 	}
 	
-	public T atualizar(T t) throws Exception {
-		em.getTransaction().begin();
-		try{
-	
-			em.flush();
-			T merge = em.merge(t);
-			em.getTransaction().commit();
-			return merge;
-		}catch(Exception e){
-			em.getTransaction().rollback();
-			throw e;
-		}
+	public void atualizar(T t)  {
+			em.merge(t);
 	}
 
 	public List<T> listaTodos() {
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
-
 		List<T> lista = em.createQuery(query).getResultList();
-
 		return lista;
 	}
 
@@ -105,8 +93,7 @@ public class DAO<T> implements Serializable {
 		CriteriaQuery<T> query = em.getCriteriaBuilder().createQuery(classe);
 		query.select(query.from(classe));
 
-		List<T> lista = em.createQuery(query).setFirstResult(firstResult)
-				.setMaxResults(maxResults).getResultList();
+		List<T> lista = em.createQuery(query).setFirstResult(firstResult).setMaxResults(maxResults).getResultList();
 
 		return lista;
 	}

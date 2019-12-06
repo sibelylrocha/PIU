@@ -47,8 +47,8 @@ public class PecaDAO implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Peca atualiza(Peca t) throws Exception{
-		return dao.atualizar(t);
+	public void atualiza(Peca t) throws Exception{
+		dao.atualizar(t);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

@@ -41,8 +41,8 @@ public class ProblemaRelatadoDAO implements Serializable{
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public ProblemaRelatado Atualiza(ProblemaRelatado t) throws Exception{
-			return dao.atualizar(t);
+		public void Atualiza(ProblemaRelatado t) throws Exception{
+			dao.atualizar(t);
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)

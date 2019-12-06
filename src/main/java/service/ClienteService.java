@@ -32,8 +32,8 @@ public class ClienteService implements Serializable{
 			dao.Cadastrar(cliente);
 		}
 
-		public List<Cliente> listarClientes() {
-			return dao.listaTodos();
+		public List<Cliente> listarTodos() {
+			return dao.listaTodosClientes();
 		}
 
 		public Cliente getClientePorCpf(String Cpf) {
@@ -53,10 +53,11 @@ public class ClienteService implements Serializable{
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void atualizarUsuario(Integer Id, Cliente cliente) throws Exception {
-			Cliente clienteDoBanco = dao.BuscaPorId(Id);
-			clienteDoBanco.atualizarCampos(cliente);
-			dao.atualiza(clienteDoBanco);
+		public void atualizarCliente(Integer Id, Cliente cliente) throws Exception {
+			Cliente clientemodificado = cliente;
+			clientemodificado.setId(Id);
+			//clienteDoBanco.atualizarCampos(cliente);
+			dao.atualiza(clientemodificado);
 			dao.comitarCache();
 		}
 		

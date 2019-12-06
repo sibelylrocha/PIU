@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<center>
+	
+		<h1>
+			<b>Eletronica do Alexandre</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+
+<body style="background-color: green">
+
+	<center>
+	
+	
+		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+
+
+	
+
+	<h:form>
+		<fieldset>		
+			<p:panel header="Atualizar Cliente">
+			<h:panelGrid columns="1">
+				
+				<h:outputLabel for="Id" value="Id: "/>
+				<h:inputText id="Id" value="#{clienteBean.id}" size="50"/>
+				
+				<h:outputLabel for="Nome" value="Nome: "/>
+				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}" size="50"/>
+				
+				<h:outputLabel for="Cpf" value="Cpf: "/>
+				<h:inputText id="Cpf" value="#{clienteBean.cliente.cpf}" size="50"/>
+				
+				<h:outputLabel for="Endereco" value="Endereco: "/>
+				<h:inputText id="Endereco" value="#{clienteBean.cliente.endereco}" size="50"/>
+				
+				<h:outputLabel for="Telefone" value="Telefone: "/>
+				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}" size="50"/>
+				
+				<h:commandButton actionListener ="#{clienteBean.AtualizarCliente}" value="Atualizar" styleClass="myButton"/>
+			</h:panelGrid>
+		</p:panel>
+		</fieldset>
+	</h:form>
+		<p:graphicImage library="image" name="logo.jpg" width="300" />
+	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
+</center>
+</body>
+
+</html>

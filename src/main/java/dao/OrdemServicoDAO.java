@@ -46,8 +46,8 @@ public class OrdemServicoDAO implements Serializable{
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public OrdemServico Atualiza(OrdemServico t) throws Exception{
-			return dao.atualizar(t);
+		public void Atualiza(OrdemServico t) throws Exception{
+			dao.atualizar(t);
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)

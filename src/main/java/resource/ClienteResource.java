@@ -37,12 +37,6 @@ public class ClienteResource implements Serializable{
 
 	public ClienteResource() {}
 	
-	@GET
-	@Produces(MediaType.APPLICATION_JSON)
-	public List<Cliente> listaClientes() {
-		List<Cliente> Clientes = clService.listarClientes();
-		return Clientes;
-	}
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

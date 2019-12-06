@@ -46,4 +46,5 @@ public class ProdutoBean implements Serializable{
 	public ProdutoService getPdService() {
 		return pdService;
 	}
+	
 }

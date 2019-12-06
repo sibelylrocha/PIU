@@ -10,7 +10,7 @@
 		</center>
 	</h:head>
 
-<h:body>
+<h:body style="background-color: green>
 <center>
 	<fieldset>
 			<h:form>
@@ -19,7 +19,7 @@
 				<h:outputLabel for="Id" value="Id: " />
 				<h:inputText id="Id" value="#{clienteBean.cliente.id}" size="50"/>
 
-			<h:commandButton value="Remover" actionListener="#{clienteBean.excluir}" styleClass="myButton"/>
+			<h:commandButton value="Remover" actionListener="#{clienteBean.excluir()}" styleClass="myButton"/>
 			
 			
 			

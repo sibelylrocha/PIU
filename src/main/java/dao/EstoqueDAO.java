@@ -46,8 +46,8 @@ public class EstoqueDAO implements Serializable{
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public Estoque Atualiza(Estoque t) throws Exception{
-			return dao.atualizar(t);
+		public void Atualiza(Estoque t) throws Exception{
+			dao.atualizar(t);
 		}
 		public void close() {
 			this.dao.close();

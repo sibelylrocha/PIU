@@ -48,8 +48,8 @@ public class EmpresaDAO implements Serializable{
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Empresa atualiza(Empresa t) throws Exception{
-		return dao.atualizar(t);
+	public void atualiza(Empresa t) throws Exception{
+		dao.atualizar(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)

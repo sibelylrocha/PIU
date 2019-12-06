@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>Todos os clientes</title>
+</h:head>
+
+<h:body style="width:100%">
+	<p:messages id="messages" showDetail="true" />
+
+
+	<p:dataTable style="width:100%;border:solid 1px black;" 
+		value="#{clienteBean.lista}" var="c">
+
+		<f:facet name="header">Lista de Clientes</f:facet>
+
+		<p:column headerText="Nome">
+			<f:facet name="header">Nome</f:facet>
+			<h:outputText value="#{}" />
+		</p:column>
+
+		<p:column headerText="Endereço">
+			<h:outputText value="#{c.}" />
+		</p:column>
+
+		<p:column headerText="Telefone">
+			<h:outputText value="#{c.telefone}" />
+		</p:column>
+
+		<p:column headerText="Cpf">
+			<h:outputText value="#{c.cpf}" />
+		</p:column>
+
+	</p:dataTable>
+</h:body>
+</html>

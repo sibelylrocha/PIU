@@ -46,8 +46,8 @@ public class PagamentoDAO implements Serializable{
 		}
 
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public Pagamento Atualiza(Pagamento t) throws Exception{
-			return dao.atualizar(t);
+		public void Atualiza(Pagamento t) throws Exception{
+			dao.atualizar(t);
 		}
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public List<Pagamento> listaTodos() {
