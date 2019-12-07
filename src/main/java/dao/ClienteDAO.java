@@ -10,6 +10,7 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+
 import modelo.Cliente;
 
 
@@ -25,7 +26,7 @@ public class ClienteDAO implements Serializable{
 	
 	public ClienteDAO() {}
 
-	public void ClienteDAO(EntityManager manager){
+	public ClienteDAO (EntityManager manager){
 		dao = new DAO<Cliente>(manager, Cliente.class);
 	}
 
@@ -50,7 +51,8 @@ public class ClienteDAO implements Serializable{
 		dao.atualizar(t);
 	}
 
-	public List<Cliente> listaTodosClientes() {
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public List<Cliente> listaTodos() {
 		return dao.listaTodos();
 	}
 	
@@ -73,6 +75,13 @@ public class ClienteDAO implements Serializable{
 		if(modificados > 0) return true;
 		else return false;
 	}
+	public Cliente retornarPorId(Integer Id){
+        String sql = "FROM "+Cliente.class.getName()+" WHERE Id = :Id";
+        Query query = this.manager.createQuery(sql);
+        query.setParameter("Id", Id);
+        
+        return (Cliente) query.getSingleResult();
+    }
 	
 	public void close() {
 		this.dao.close();

@@ -11,6 +11,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
+import modelo.Cliente;
 import modelo.Empresa;
 
 @Stateless
@@ -111,7 +112,13 @@ public class EmpresaDAO implements Serializable{
 		if(modificados > 0) return true;
 		else return false;
 	}
-
+	public Empresa retornarPorCnpj(String Cnpj){
+        String sql = "FROM "+Empresa.class.getName()+" WHERE Cnpj = :Cnpj";
+        Query query = this.manager.createQuery(sql);
+        query.setParameter("Cnpj", Cnpj);
+        
+        return (Empresa) query.getSingleResult();
+    }
 	public void comitarCache() {
 		dao.comitarCache();
 	}

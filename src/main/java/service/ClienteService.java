@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
@@ -12,6 +13,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
+
 import dao.ClienteDAO;
 import dto.ViolacoesValidacao;
 import exception.ValidacaoException;
@@ -32,8 +34,8 @@ public class ClienteService implements Serializable{
 			dao.Cadastrar(cliente);
 		}
 
-		public List<Cliente> listarTodos() {
-			return dao.listaTodosClientes();
+		public List<Cliente> listarCliente() {
+			return dao.listaTodos();
 		}
 
 		public Cliente getClientePorCpf(String Cpf) {
