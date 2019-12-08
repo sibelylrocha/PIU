@@ -46,4 +46,13 @@ public class PagamentoService implements Serializable{
 	public void atualizarPagamento(Pagamento pagamento) throws Exception{
 		dao.Atualiza(pagamento);
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualizarPagamento(Integer Id, Pagamento pagamento) throws Exception {
+		Pagamento pagamentomodificado = pagamento;
+		pagamentomodificado.setId(Id);
+		//clienteDoBanco.atualizarCampos(cliente);
+		dao.Atualiza(pagamentomodificado);
+		dao.comitarCache();
+	}
 }

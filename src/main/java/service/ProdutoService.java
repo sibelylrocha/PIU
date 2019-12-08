@@ -47,4 +47,13 @@ private static final long serialVersionUID = 1L;
 		dao.comitarCache();
 		return resultado;
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualizarProduto(Integer Id, Produto produto) throws Exception {
+		Produto produtomodificado = produto;
+		produtomodificado.setId(Id);
+		//clienteDoBanco.atualizarCampos(cliente);
+		dao.Atualiza(produtomodificado);
+		dao.comitarCache();
+	}
 }

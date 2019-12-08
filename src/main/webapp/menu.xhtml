@@ -10,18 +10,13 @@
         <h:form>
                    <p:menubar>
                 <p:submenu label="Cadastro">
-                    <p:menuitem value="cliente" url="cliente/cadastrar_cliente.xhtml" />
-                   	<p:menuitem value="empresa" url="empresa/cadastrar_empresa" />
-                    <p:menuitem value="Eixo Profissional" url="cadastroEixoProfissional.xhtml" />                    
-                    <p:menuitem value="Professor" url="cadastroProfessor.xhtml" />
-                    <p:menuitem value="Vaga" url="cadastroVaga.xhtml" />
+                    <p:menuitem value="cliente" url="Cliente/cadastrar_cliente.xhtml" />
+                   	<p:menuitem value="empresa" url="Empresa/cadastrar_empresa.xhtml" />
+                    <p:menuitem value="produto" url="Produto/cadastrar_produto.xhtml" />                    
+                    <p:menuitem value="Professor" url="Peca/cadastrar_peca.xhtml" />
                 </p:submenu>
                 <p:submenu label="Lista">
-                    <p:menuitem value="Campus" url="listaCampus.xhtml" />
-                    <p:menuitem value="Disciplina" url="listaDisciplina.xhtml" />
-                    <p:menuitem value="Eixo Profissional" url="listaEixoProfissional.xhtml" />
-                    <p:menuitem value="Professor" url="listaProfessor.xhtml" />
-                    <p:menuitem value="Vaga" url="listaVaga.xhtml" />
+                    <p:menuitem value="cliente" url="Cliente/cadastrar_cliente.xhtml" />
                 </p:submenu>
             </p:menubar>-->
             
@@ -30,7 +25,7 @@
             
            <h:panelGrid columns="6">
                 <h:panelGroup>
-                    <h:commandLink value="cadastro eixo" action="cadastroEixoProfissional" />
+                    <h:commandLink value="cadastro cliente" action="Cliente/cadastrar_cliente" />
                     <br/>
                     <h:commandLink value="lista eixo" action="listaEixoProfissional" />
                 </h:panelGroup>

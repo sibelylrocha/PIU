@@ -31,6 +31,7 @@ public class ClienteService implements Serializable{
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public void cadastarCliente(Cliente cliente) throws ValidacaoException{
+			validaCliente(cliente);
 			dao.Cadastrar(cliente);
 		}
 

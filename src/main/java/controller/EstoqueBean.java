@@ -2,9 +2,8 @@ package controller;
 
 import java.io.Serializable;
 
+
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,6 +18,7 @@ public class EstoqueBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	private Integer Id;
 	
 	@Inject 
 	private Estoque estoque;
@@ -28,14 +28,30 @@ public class EstoqueBean implements Serializable{
 	
 	public EstoqueBean() {}
 	
+	public EstoqueBean(Estoque estoque, EstoqueService etService, Integer Id) {
+		this.estoque = estoque;
+		this.etService = etService;
+		this.Id = Id;
+	}
+
 	public void salvar() throws ValidacaoException {
-		try{
 			etService.cadastarEstoque(estoque);
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
-		}catch(ValidacaoException v){
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
-		}
-		
+	}
+	
+	public void excluir() throws Exception {
+		etService.removerEstoque(estoque.getId());
+	}
+
+	public void atualizarCliente() throws Exception {
+		etService.atualizarEstoque(estoque);
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
 	}
 
 	public Estoque getEstoque() {

@@ -2,10 +2,12 @@ package service;
 
 import java.io.Serializable;
 import java.util.List;
+
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.inject.Inject;
+
 import dao.VendaDAO;
 import exception.ValidacaoException;
 import modelo.Venda;
@@ -45,5 +47,14 @@ public class VendaService implements Serializable{
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void atualizarUsuario(Venda venda) throws Exception{
 		dao.Atualiza(venda);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualizarVenda(Integer Id, Venda venda) throws Exception {
+		Venda vendamodificado = venda;
+		vendamodificado.setId(Id);
+		//clienteDoBanco.atualizarCampos(cliente);
+		dao.Atualiza(vendamodificado);
+		dao.comitarCache();
 	}
 }

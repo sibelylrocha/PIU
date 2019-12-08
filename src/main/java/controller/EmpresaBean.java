@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import exception.ValidacaoException;
-import modelo.Cliente;
 import modelo.Empresa;
 import service.EmpresaService;
 
@@ -30,13 +27,30 @@ public class EmpresaBean implements Serializable{
 	
 	public EmpresaBean() {}
 	
+	
+	
+	public EmpresaBean(Empresa empresa, EmpresaService emService, List<Empresa> lista) {
+		this.empresa = empresa;
+		this.emService = emService;
+		this.lista = lista;
+	}
+
+
+
 	public void salvar() throws ValidacaoException {
-		try{
-			emService.cadastarEmpresa(empresa);
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
-		}catch(ValidacaoException v){
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
-		}
+		emService.cadastarEmpresa(empresa);
+		
+	}
+	public void atualizarEmpresa() throws Exception {
+		emService.atualizarEmpresa(empresa);
+	}
+	public List<Empresa> listaTodos() {
+		lista = emService.listarEmpresas();
+		return lista;
+	}
+	
+	public void excluir() throws Exception {
+		emService.removerEmpresa(empresa.getCnpj());
 	}
 
 	public List<Empresa> getLista() {

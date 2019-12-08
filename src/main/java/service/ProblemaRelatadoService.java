@@ -49,4 +49,13 @@ public class ProblemaRelatadoService implements Serializable{
 	public void atualizarProblemaRelatado(ProblemaRelatado problemarelatado) throws Exception{
 		dao.Atualiza(problemarelatado);
 	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualizarProblemaRelatado(Integer Protocolo, ProblemaRelatado problemarelatado) throws Exception {
+		ProblemaRelatado problemarelatadomodificado = problemarelatado;
+		problemarelatadomodificado.setProtocolo(Protocolo);
+		//clienteDoBanco.atualizarCampos(cliente);
+		dao.Atualiza(problemarelatadomodificado);
+		dao.comitarCache();
+	}
 }

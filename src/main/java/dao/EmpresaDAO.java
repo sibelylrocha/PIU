@@ -10,8 +10,8 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
-import modelo.Cliente;
 import modelo.Empresa;
 
 @Stateless
@@ -104,6 +104,23 @@ public class EmpresaDAO implements Serializable{
 	public void close() {
 		this.dao.close();
 	}
+	
+	public Empresa loginEmpresa(String Password , String UserName)  {
+	try {
+		String sql = "select e from empresa e where e.Password =:Password and e.UserName =:UserName";
+		TypedQuery<Empresa> query = manager.createQuery(sql , Empresa.class);
+		query.setParameter("Password",Password);
+		query.setParameter("UserName",UserName);
+		Empresa empresa = query.getSingleResult();
+		if(empresa != null && empresa.getUserName().equals(UserName) && empresa.getPassword().equals(Password)) {
+			return empresa;
+		}
+	}catch (Exception e) {
+		System.out.println(e.getMessage());
+	}	
+	return null;
+}
+
 	public boolean removePorCnpj(String Cnpj) {
 		String hql = "DELETE FROM Empresa WHERE Cnpj = :Cnpj";
 		Query query = manager.createQuery(hql);
@@ -112,13 +129,6 @@ public class EmpresaDAO implements Serializable{
 		if(modificados > 0) return true;
 		else return false;
 	}
-	public Empresa retornarPorCnpj(String Cnpj){
-        String sql = "FROM "+Empresa.class.getName()+" WHERE Cnpj = :Cnpj";
-        Query query = this.manager.createQuery(sql);
-        query.setParameter("Cnpj", Cnpj);
-        
-        return (Empresa) query.getSingleResult();
-    }
 	public void comitarCache() {
 		dao.comitarCache();
 	}

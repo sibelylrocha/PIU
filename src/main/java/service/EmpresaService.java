@@ -13,7 +13,6 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 import javax.validation.ValidatorFactory;
-
 import dao.EmpresaDAO;
 import dto.ViolacoesValidacao;
 import exception.ValidacaoException;
@@ -80,6 +79,15 @@ private static final long serialVersionUID = 1L;
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void atualizarEmpresa(Empresa empresa) throws Exception{
 		dao.atualiza(empresa);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualizarEmpresa(String Cnpj, Empresa empresa) throws Exception {
+		Empresa empresamodificado = empresa;
+		empresamodificado.setCnpj(Cnpj);
+		//clienteDoBanco.atualizarCampos(cliente);
+		dao.atualiza(empresamodificado);
+		dao.comitarCache();
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
