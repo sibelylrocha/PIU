@@ -30,7 +30,7 @@ private static final long serialVersionUID = 1L;
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void cadastarEmpresa(Empresa empresa) throws ValidacaoException{
-		validaEmpresa(empresa);
+		System.out.println("comovai");
 		dao.Cadastrar(empresa);
 	}
 
@@ -82,10 +82,9 @@ private static final long serialVersionUID = 1L;
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualizarEmpresa(String Cnpj, Empresa empresa) throws Exception {
+	public void atualizarEmpresa(Integer Id, Empresa empresa) throws Exception {
 		Empresa empresamodificado = empresa;
-		empresamodificado.setCnpj(Cnpj);
-		//clienteDoBanco.atualizarCampos(cliente);
+		empresamodificado.setId(Id);
 		dao.atualiza(empresamodificado);
 		dao.comitarCache();
 	}

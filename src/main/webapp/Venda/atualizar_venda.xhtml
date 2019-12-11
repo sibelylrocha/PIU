@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
 
 
@@ -30,26 +31,25 @@
 
 	<h:form>
 		<fieldset>		
-			<p:panel header="Atualizar Cliente">
-			<p:panelGrid columns="1">
+			<p:panel header="Atualizar Venda">
+			<h:panelGrid columns="1">
 				
 				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{clienteBean.id}" size="50"/>
+				<h:inputText id="Id" value="#{vendaBean.id}" size="50"/>
 				
-				<h:outputLabel for="Nome" value="Nome: "/>
-				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}" size="50"/>
+				<h:outputLabel for="Data" value="Data: "/>
+				<h:inputText id="Data" value="#{vendaBean.venda.data}" size="50">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+				</h:inputText>
 				
-				<h:outputLabel for="Cpf" value="Cpf: "/>
-				<h:inputText id="Cpf" value="#{clienteBean.cliente.cpf}" size="50"/>
-				
-				<h:outputLabel for="Endereco" value="Endereco: "/>
-				<h:inputText id="Endereco" value="#{clienteBean.cliente.endereco}" size="50"/>
-				
-				<h:outputLabel for="Telefone" value="Telefone: "/>
-				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}" size="50"/>
-				
-				<h:commandButton actionListener ="#{clienteBean.atualizarCliente}" value="Atualizar" styleClass="myButton"/>
-			</p:panelGrid>
+				<h:outputLabel for="Valor" value="Valor: "/>
+				<h:inputText id="Valor" value="#{vendaBean.venda.valor}" size="50">
+				<f:convertNumber pattern="#,##0.00"/>
+         </h:inputText>
+         
+				<h:commandButton actionListener ="#{produtoBean.atualizarProduto}" value="Atualizar" styleClass="myButton"/>
+	
+			</h:panelGrid>
 		</p:panel>
 		</fieldset>
 	</h:form>

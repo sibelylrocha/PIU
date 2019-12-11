@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.RequestScoped;
+import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -13,36 +13,37 @@ import modelo.Empresa;
 import service.EmpresaService;
 
 @Named
-@RequestScoped
+@ViewScoped
 public class EmpresaBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
+	private Integer Id;
+	
 	@Inject
 	private Empresa empresa;
 	
-	@Inject
-	private EmpresaService emService;
 	private List<Empresa> lista = new ArrayList<Empresa>();
 	
+	@Inject
+	private EmpresaService emService;
+	
 	public EmpresaBean() {}
-	
-	
-	
-	public EmpresaBean(Empresa empresa, EmpresaService emService, List<Empresa> lista) {
+
+	public EmpresaBean(Empresa empresa, EmpresaService emService, List<Empresa> lista, Integer Id) {
 		this.empresa = empresa;
 		this.emService = emService;
 		this.lista = lista;
+		this.Id = Id;
 	}
 
-
-
 	public void salvar() throws ValidacaoException {
+		System.out.println("hello");
 		emService.cadastarEmpresa(empresa);
 		
 	}
-	public void atualizarEmpresa() throws Exception {
-		emService.atualizarEmpresa(empresa);
+	public void atualizarCliente() throws Exception {
+		emService.atualizarEmpresa(Id, empresa);
 	}
 	public List<Empresa> listaTodos() {
 		lista = emService.listarEmpresas();
@@ -79,6 +80,14 @@ public class EmpresaBean implements Serializable{
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setCnpj(Integer Id) {
+		this.Id = Id;
 	}
 	
 }

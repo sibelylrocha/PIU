@@ -25,6 +25,7 @@ public class VendaService implements Serializable{
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void cadastarVenda(Venda venda) throws ValidacaoException{
+		System.out.println("oi");
 		dao.Cadastrar(venda);
 	}
 

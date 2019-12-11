@@ -40,6 +40,7 @@ public class EmpresaDAO implements Serializable{
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void Cadastrar(Empresa t) {
+		System.out.println("ola");
 		 dao.Cadastrar(t);
 	}
 	

@@ -1,6 +1,7 @@
 package service;
 
 import java.io.Serializable;
+import java.util.List;
 
 import javax.ejb.Stateless;
 import javax.ejb.TransactionAttribute;
@@ -27,7 +28,6 @@ private static final long serialVersionUID = 1L;
 		dao.Cadastrar(estoque);
 	}
 	
-	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public boolean removerEstoque(Integer Id) {
 		boolean resultado = dao.removePorId(Id);
@@ -35,6 +35,10 @@ private static final long serialVersionUID = 1L;
 		return resultado;
 	}
 
+	public List<Estoque> listarEstoque() {
+		return dao.listaTodos();
+	}
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void atualizarEstoque(Estoque estoque) throws Exception{
 		dao.Atualiza(estoque);

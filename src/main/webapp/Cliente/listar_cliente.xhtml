@@ -10,8 +10,8 @@
 	<title>Todos os clientes</title>
 </h:head>
 
-<h:body style="width:100%">
-	<h:messages id="messages" showDetail="true" />
+<h:body style="background-color: green">
+	<p:messages id="messages" showDetail="true" />
 
 	<p:dataTable style="width:100%;border:solid 1px black;" 
 			value="#{clienteBean.listaTodos()}" var="cliente">
@@ -33,5 +33,16 @@
 				<h:outputText value="#{cliente.cpf}" />
 			</p:column>
 	</p:dataTable>
+	<center>
+	<p:graphicImage library="image" name="logo.jpg" width="300" />
+	</center>
+	<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </h:body>
 </html>

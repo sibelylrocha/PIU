@@ -6,15 +6,14 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.Null;
-
-import org.hibernate.validator.constraints.br.CNPJ;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -38,15 +37,17 @@ public class Empresa implements Serializable {
 	@Column(nullable = false)
 	private String Nome;
 	
-	@Null
 	@Column
 	private String Telefone;
 	
-	@CNPJ
 	@NotBlank(message = "Cnpj é obrigatório!")
-	@Id
 	@Column(nullable = false)
 	private String Cnpj;
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column
+	private Integer Id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Id_estoque", referencedColumnName = "Id")
@@ -59,12 +60,21 @@ public class Empresa implements Serializable {
 
 	}
 
-	public Empresa(String UserName, String Password, String Nome, String Telefone, String Cnpj) {
+	public Empresa(String UserName, String Password, String Nome, String Telefone, String Cnpj, Integer Id) {
 		this.Cnpj = Cnpj;
+		this.Id = Id;
 		this.Nome = Nome;
 		this.Telefone = Telefone;
 		this.UserName = UserName;
 		this.Password = Password;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer Id) {
+		this.Id = Id;
 	}
 
 	public static long getSerialversionuid() {

@@ -26,18 +26,20 @@
 	<p:messages id="messages" showDetail="true" />
 
 	<p:dataTable style="width:100%;border:solid 1px black;" 
-			value="#{estoqueBean.listaTodos()}" var="estoque">
-	
+			value="#{problemaRelatadoBean.listaTodos()}" var="problema">
+
 			<p:column headerText="Descricao">
 				<f:facet name="header">Descricao</f:facet>
-				<h:outputText value="#{estoque.descricao}" />
+				<h:outputText value="#{problema.descricao}" />
 			</p:column>
-	
-			<p:column headerText="Id">
-				<h:outputText value="#{estoque.id}" />
+			
+			<p:column headerText="Protocolo">
+				<f:facet name="header">Protocolo</f:facet>
+				<h:outputText value="#{problema.protocolo}" />
 			</p:column>
 	
 	</p:dataTable>
+	
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
 </center>
 <div class="endereco">

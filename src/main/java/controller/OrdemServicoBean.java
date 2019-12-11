@@ -1,10 +1,10 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -19,6 +19,9 @@ public class OrdemServicoBean implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 
+	private Integer Id;
+	
+	private List<OrdemServico> lista = new ArrayList<OrdemServico>();
 	
 	@Inject 
 	private OrdemServico ordemservico;
@@ -28,14 +31,46 @@ public class OrdemServicoBean implements Serializable{
 	
 	public OrdemServicoBean() {}
 	
+	public OrdemServicoBean(Integer Id, OrdemServico ordemservico, OrdemServicoService orService, List<OrdemServico> lista) {
+		this.lista = lista;
+		this.Id = Id;
+		this.ordemservico = ordemservico;
+		this.orService = orService;
+	}
+
+
+
 	public void salvar() throws ValidacaoException {
-		try{
 			orService.cadastarOrdemServico(ordemservico);
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
-		}catch(ValidacaoException v){
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
-		}
-		
+	}
+	
+	public void excluir() throws Exception {
+		orService.removerOrdemServico(ordemservico.getId());
+	}
+
+	public List<OrdemServico> listaTodos() {
+		lista = orService.listarOrdemServico();
+		return lista;
+	}
+
+	public void atualizarOrdemServico() throws Exception {
+		orService.atualizarOrdemServico(Id, ordemservico);
+	}
+
+	public List<OrdemServico> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<OrdemServico> lista) {
+		this.lista = lista;
+	}
+
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer Id) {
+		this.Id = Id;
 	}
 
 	public OrdemServico getOrdemservico() {

@@ -18,7 +18,7 @@
 
 </h:head>
 
-<body style="background-color: green">
+<h:body style="background-color: green">
 
 	<center>
 	
@@ -31,7 +31,7 @@
 	<h:form>
 		<fieldset>		
 			<p:panel header="Cadastrar Cliente">
-			<h:panelGrid columns="1">
+			<p:panelGrid columns="1">
 				<h:outputLabel for="Nome" value="Nome: "/>
 				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}" size="50"/>
 				
@@ -45,13 +45,21 @@
 				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}" size="50"/>
 				
 				<h:commandButton actionListener ="#{clienteBean.salvar}" value="Adicionar" styleClass="myButton"/>
-			</h:panelGrid>
+				<h:commandButton actionListener=""/>
+			</p:panelGrid>
 		</p:panel>
 		</fieldset>
 	</h:form>
 		<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
 </center>
-</body>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
+</h:body>
 
 </html>

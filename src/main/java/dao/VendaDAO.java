@@ -36,6 +36,7 @@ public class VendaDAO implements Serializable{
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	public void Cadastrar(Venda t) {
+		System.out.println("oi");
 		dao.Cadastrar(t);
 	}
 

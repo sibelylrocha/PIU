@@ -1,8 +1,6 @@
 package modelo;
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
@@ -35,31 +32,24 @@ public class Produto implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-	private int Id;
+	private Integer Id;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Id_estoque", referencedColumnName = "Id")
 	private Estoque estoque;
 
-	@ManyToMany(mappedBy = "Produto", cascade = CascadeType.ALL)
-	private List<Venda> Vendas;
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "Id_venda", referencedColumnName = "Id")
+	private Venda venda;
 
 	public Produto() {
 	}
 
-	public Produto(String Tipo, String Descricao, String Marca, int Id) {
+	public Produto(String Tipo, String Descricao, String Marca, Integer Id) {
 		this.Id = Id;
 		this.Marca = Marca;
 		this.Tipo = Tipo;
 		this.Descricao = Descricao;
-	}
-
-	public List<Venda> getVendas() {
-		return Vendas;
-	}
-
-	public void setVendas(List<Venda> vendas) {
-		Vendas = vendas;
 	}
 
 	public static long getSerialversionuid() {
@@ -74,11 +64,11 @@ public class Produto implements Serializable {
 		this.estoque = estoque;
 	}
 
-	public int getId() {
+	public Integer getId() {
 		return Id;
 	}
 
-	public void setId(int Id) {
+	public void setId(Integer Id) {
 		this.Id = Id;
 	}
 

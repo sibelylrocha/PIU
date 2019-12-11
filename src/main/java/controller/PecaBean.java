@@ -1,10 +1,10 @@
 package controller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.enterprise.context.RequestScoped;
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -18,6 +18,9 @@ public class PecaBean implements Serializable{
 
 private static final long serialVersionUID = 1L;
 	
+	private Integer Id;
+	
+	private List<Peca> lista = new ArrayList<Peca>();
 
 	@Inject
 	private Peca peca;
@@ -27,13 +30,45 @@ private static final long serialVersionUID = 1L;
 	
 	public PecaBean() {}
 	
+	public PecaBean(Integer Id, List<Peca> lista, Peca peca, PecaService pcService) {
+
+		this.Id = Id;
+		this.lista = lista;
+		this.peca = peca;
+		this.pcService = pcService;
+	}
+
 	public void salvar() throws ValidacaoException {
-		try{
 			pcService.cadastarPeca(peca);
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro Realizado Com Sucesso!"));
-		}catch(ValidacaoException v){
-		  FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "erro", "Erro no Cadastro"));
-		}
+	}
+
+	public void excluir() throws Exception {
+		pcService.removerPeca(peca.getId());
+	}
+
+	public List<Peca> listaTodos() {
+		lista = pcService.listarPecas();
+		return lista;
+	}
+
+	public void atualizarCliente() throws Exception {
+		pcService.atualizarPeca(Id, peca);
+	}
+	
+	public Integer getId() {
+		return Id;
+	}
+
+	public void setId(Integer id) {
+		Id = id;
+	}
+
+	public List<Peca> getLista() {
+		return lista;
+	}
+
+	public void setLista(List<Peca> lista) {
+		this.lista = lista;
 	}
 
 	public Peca getPeca() {

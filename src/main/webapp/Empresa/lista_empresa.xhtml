@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
 		
 	<h:head>
@@ -17,24 +18,35 @@
 
 </h:head>
 
-<h:body>
-
-	<center>
-	<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
-
-	<fieldset>
-			<h:form>
-			<p:panel header="Lista Empresa">
-			<p:panelGrid columns="2">
-
-			<h:commandButton value="Lista Empressa" actionListener="#{empresaBean.listacliente}" styleClass="myButton"/>
-			
-			</p:panelGrid>	
-			</p:panel>	
-		</h:form>
-	</fieldset>
-	<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
+<h:body style="background-color: green">
+<center>
+<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
 </center>
+	<p:messages id="messages" showDetail="true" />
+
+	<p:dataTable style="width:100%;border:solid 1px black;" 
+			value="#{empresaBean.listaTodos()}" var="empresa">
+	
+			<p:column headerText="Nome">
+				<h:outputText value="#{empresa.nome}" />
+			</p:column>
+			
+			<p:column headerText="Telefone">
+				<h:outputText value="#{empresa.telefone}" />
+			</p:column>
+			
+			<p:column headerText="Cnpj">
+				<h:outputText value="#{empresa.cnpj}" />
+			</p:column>
+			
+	</p:dataTable>
+	<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </h:body>
 </html>

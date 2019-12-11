@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://java.sun.com/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
 		
 	<h:head>
@@ -17,24 +18,46 @@
 
 </h:head>
 
-<h:body style="background-color: green>
+<h:body style="background-color: green">
 	
 	<center>
 	<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
 
-	<fieldset>
-			<h:form>
-			<p:panel header="Lista Peça">
-			<p:panelGrid columns="2">
+	<p:messages id="messages" showDetail="true" />
 
-			<h:commandButton value="Lista Peça" actionListener="#{pecaBean.ListaCliente}" styleClass="myButton"/>
+	<p:dataTable style="width:100%;border:solid 1px black;" 
+			value="#{pecaBean.listaTodos()}" var="peca">
+	
+			<p:column headerText="Descricao">
+				<f:facet name="header">Descricao</f:facet>
+				<h:outputText value="#{peca.descricao}" />
+			</p:column>
+	
+			<p:column headerText="Valor">
+				<h:outputText value="#{peca.valor}" />
+			</p:column>
+	
+			<p:column headerText="Marca">
+				<h:outputText value="#{produto.marca}" />
+			</p:column>
 			
-			</p:panelGrid>	
-			</p:panel>	
-		</h:form>
-	</fieldset>
+			<p:column headerText="Quantidade">
+				<h:outputText value="#{peca.quantidade}" />
+			</p:column>
+			
+			<p:column headerText="Id">
+				<h:outputText value="#{peca.id}" />
+			</p:column>
+	</p:dataTable>
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
 </center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </h:body>
 </html>

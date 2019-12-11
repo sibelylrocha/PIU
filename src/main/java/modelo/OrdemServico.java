@@ -18,6 +18,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.PositiveOrZero;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -26,6 +27,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 public class OrdemServico implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@PositiveOrZero
 	@Column
 	private double ValorTotal;
 	
@@ -44,7 +46,7 @@ public class OrdemServico implements Serializable {
 	private int Id;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "Cnpj_empresa", referencedColumnName = "Cnpj")
+	@JoinColumn(name = "Id_empresa", referencedColumnName = "Id")
 	private Empresa empresa;
 
 	@OneToMany(mappedBy = "ordemservico")

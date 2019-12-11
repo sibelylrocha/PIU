@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
 		xmlns:p="http://primefaces.org/ui">
 
 
@@ -18,7 +19,7 @@
 
 </h:head>
 
-<body style="background-color: green">
+<h:body style="background-color: green">
 
 	<center>
 	
@@ -30,25 +31,24 @@
 
 	<h:form>
 		<fieldset>		
-			<p:panel header="Atualizar Cliente">
-			<p:panelGrid columns="1">
+			<p:panel header="Atualizar Pagamento">
+			<p:panelGrid columns="2">
 				
-				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{clienteBean.id}" size="50"/>
+				<h:outputLabel for="TipoForma" value="TipoForma: "/>
+				<h:inputText id="TipoForma" value="#{pagamentoBean.pagamento.tipoForma}" size="50"/>
 				
-				<h:outputLabel for="Nome" value="Nome: "/>
-				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}" size="50"/>
+				<h:outputLabel for="Data" value="Data: "/>
+				<h:inputText id="Data" value="#{pagamentoBean.pagamento.data}" size="50">
+				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
+				</h:inputText>
 				
-				<h:outputLabel for="Cpf" value="Cpf: "/>
-				<h:inputText id="Cpf" value="#{clienteBean.cliente.cpf}" size="50"/>
-				
-				<h:outputLabel for="Endereco" value="Endereco: "/>
-				<h:inputText id="Endereco" value="#{clienteBean.cliente.endereco}" size="50"/>
-				
-				<h:outputLabel for="Telefone" value="Telefone: "/>
-				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}" size="50"/>
-				
-				<h:commandButton actionListener ="#{clienteBean.atualizarCliente}" value="Atualizar" styleClass="myButton"/>
+				<h:outputLabel for="Valor" value="Valor: "/>
+				<h:inputText id="Valor" value="#{pagamentoBean.pagamento.valor}">
+				<f:convertNumber pattern="#,##0.00"/>
+         		</h:inputText>
+         		
+				<h:commandButton actionListener ="#{pagamentoBean.atualizarPagamento}" value="Atualizar" styleClass="myButton"/>
+	
 			</p:panelGrid>
 		</p:panel>
 		</fieldset>
@@ -63,6 +63,6 @@
 					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
 				</p>
 			</div>
-</body>
+</h:body>
 
 </html>

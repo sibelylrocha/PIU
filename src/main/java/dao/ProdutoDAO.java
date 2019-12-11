@@ -63,10 +63,10 @@ public class ProdutoDAO implements Serializable{
 			this.dao.close();
 		}
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public boolean removePorId(Integer id) {
-			String hql = "DELETE FROM Usuario WHERE id = :id";
+		public boolean removePorId(Integer Id) {
+			String hql = "DELETE FROM Produto WHERE Id = :Id";
 			Query query = manager.createQuery(hql);
-			query.setParameter("id", id);
+			query.setParameter("Id", Id);
 			int modificados = query.executeUpdate();
 			if(modificados > 0) return true;
 			else return false;

@@ -19,7 +19,7 @@
 	
 	
 
-<h:body>
+<h:body style="background-color: green">
 
 <center>
 	
@@ -30,10 +30,9 @@
 		
 	<h:form>		
 		<fieldset>
-			<legend>Dados da Empresa</legend>
 			
 			<p:panel header="Cadastrar Empresa">
-			<h:panelGrid columns="2">
+			<p:panelGrid columns="2">
 				<h:outputLabel for="UserName" value="UserName: "/>
 				<h:inputText id="UserName" value="#{empresaBean.empresa.userName}" size="50"/>
 				
@@ -51,13 +50,20 @@
 				
 				
 				<h:commandButton actionListener="#{empresaBean.salvar}" value="Adicionar" styleClass="myButton"/>
-			</h:panelGrid>	
+			</p:panelGrid>	
 			</p:panel>
 		</fieldset>
 	</h:form>
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
 </center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </h:body>
 
 </html>

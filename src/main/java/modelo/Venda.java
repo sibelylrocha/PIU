@@ -12,14 +12,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NegativeOrZero;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
@@ -37,12 +35,8 @@ public class Venda implements Serializable {
 	@Temporal(TemporalType.DATE)
 	@Column
 	private Date Data;
-	
-	@Column
-	private Time Hora;
-	
-	@NegativeOrZero
-	@NotEmpty
+
+	@PositiveOrZero
 	@Column
 	private double Valor;
 
@@ -53,20 +47,18 @@ public class Venda implements Serializable {
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "Id_cliente", referencedColumnName = "Id")
 	private Cliente cliente;
-
-	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "Id_produto", joinColumns = { @JoinColumn(name = "Id_Venda") }, inverseJoinColumns = {
-			@JoinColumn(name = "Id") })
-	private List<Produto> Produto;
+	
+	@OneToMany(mappedBy = "venda")
+	private List<Produto> produto;
 
 	public Venda() {
 
 	}
 
-	public Venda(int Id, Date Data, Time Hora, double Valor) {
+	public Venda(int Id, Date Data, Time Hora, double Valor, List<Produto> produto) {
 		this.Id = Id;
+		this.produto = produto;
 		this.Data = Data;
-		this.Hora = Hora;
 		this.Valor = Valor;
 	}
 
@@ -83,11 +75,11 @@ public class Venda implements Serializable {
 	}
 
 	public List<Produto> getProduto() {
-		return Produto;
+		return produto;
 	}
 
 	public void setProduto(List<Produto> produto) {
-		Produto = produto;
+		this.produto = produto;
 	}
 
 	public Pagamento getPagamento() {
@@ -112,14 +104,6 @@ public class Venda implements Serializable {
 
 	public void setData(Date Data) {
 		this.Data = Data;
-	}
-
-	public Time getHora() {
-		return Hora;
-	}
-
-	public void setHora(Time Hora) {
-		this.Hora = Hora;
 	}
 
 	public double getValor() {

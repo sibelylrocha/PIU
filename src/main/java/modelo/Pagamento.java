@@ -16,6 +16,7 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.PositiveOrZero;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -34,8 +35,11 @@ public class Pagamento implements Serializable {
 	
 	@Column(nullable = false)
 	private String TipoForma;
+	
+	@PositiveOrZero
 	@Column
-	private double valor;
+	private double Valor;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
@@ -53,7 +57,7 @@ public class Pagamento implements Serializable {
 	}
 
 	public Pagamento(Date Data, String TipoForma, double Valor, int Id, Cliente Cliente, Venda Codigo) {
-		this.valor = Valor;
+		this.Valor = Valor;
 		this.Id = Id;
 		this.Data = Data;
 		this.TipoForma = TipoForma;
@@ -80,11 +84,11 @@ public class Pagamento implements Serializable {
 	}
 
 	public double getValor() {
-		return valor;
+		return Valor;
 	}
 
-	public void setValor(double valor) {
-		this.valor = valor;
+	public void setValor(double Valor) {
+		this.Valor = Valor;
 	}
 
 	public Date getData() {

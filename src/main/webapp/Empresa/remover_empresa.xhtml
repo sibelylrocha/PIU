@@ -16,8 +16,8 @@
 			<h:form>
 			<p:panel header="Remover Empresa">
 			<p:panelGrid columns="2">
-				<h:outputLabel for="Cnpj" value="Cnpj: " />
-				<h:inputText id="Cnpj" value="#{empresaBean.empresa.cnpj}" size="50"/>
+				<h:outputLabel for="Id" value="Id: " />
+				<h:inputText id="Id" value="#{empresaBean.empresa.id}" size="50"/>
 
 			<h:commandButton value="Remover" actionListener="#{empresaBean.excluir}" styleClass="myButton"/>
 			
@@ -28,7 +28,14 @@
 		</h:form>
 	</fieldset>
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
 </center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </h:body>
 </html>

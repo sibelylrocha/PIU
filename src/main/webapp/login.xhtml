@@ -1,7 +1,6 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	template="./resources/templates/template3.xhtml"
+<!DOCTYPE htnl PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:p="http://primefaces.org/ui">
 
@@ -9,21 +8,15 @@
 	<h:head>
 		<title>Login</title>
 	</h:head>
-
-
-	<ui:define name="content" >
+<h:body>
 		<form>
-         <fieldset id="fieldset-login">
-         <legend>Login</legend>
-          <p:panelGrid columns="1">
-          <h:inputText id="username" value="#{loginBean.userName}" />
-          <p:outputLabel for="password" value="Senha:" />
-          <h:inputSecret id="password" value="#{loginBean.password}" />
+         
+          <h:inputText value="#{loginBean.empresa.userName}" />
+          <h:inputSecret id="Password" value="#{loginBean.empresa.password}" />
            
-          <p:commandButton id="Login" value="Acessar" action="#{loginBean.logar}"/> 
-          </p:panelGrid>
-         </fieldset> 
+          <h:commandButton value="Acessar" action="#{loginBean.logar()}"/> 
+         
     </form>
-	</ui:define>
-</ui:composition>
+	</h:body>
+</html>
 

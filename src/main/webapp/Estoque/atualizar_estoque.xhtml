@@ -30,25 +30,16 @@
 
 	<h:form>
 		<fieldset>		
-			<p:panel header="Atualizar Cliente">
+			<p:panel header="Atualizar Estoque">
 			<p:panelGrid columns="1">
 				
 				<h:outputLabel for="Id" value="Id: "/>
-				<h:inputText id="Id" value="#{clienteBean.id}" size="50"/>
+				<h:inputText id="Id" value="#{estoqueBean.id}" size="50"/>
 				
-				<h:outputLabel for="Nome" value="Nome: "/>
-				<h:inputText id="Nome" value="#{clienteBean.cliente.nome}" size="50"/>
+				<h:outputLabel for="Descricao" value="Descricao: "/>
+				<h:inputText id="Descricao" value="#{estoqueBean.estoque.descricao}" size="50"/>
 				
-				<h:outputLabel for="Cpf" value="Cpf: "/>
-				<h:inputText id="Cpf" value="#{clienteBean.cliente.cpf}" size="50"/>
-				
-				<h:outputLabel for="Endereco" value="Endereco: "/>
-				<h:inputText id="Endereco" value="#{clienteBean.cliente.endereco}" size="50"/>
-				
-				<h:outputLabel for="Telefone" value="Telefone: "/>
-				<h:inputText id="Telefone" value="#{clienteBean.cliente.telefone}" size="50"/>
-				
-				<h:commandButton actionListener ="#{clienteBean.atualizarCliente}" value="Atualizar" styleClass="myButton"/>
+				<h:commandButton actionListener ="#{estoqueBean.atualizarEstoque}" value="Atualizar" styleClass="myButton"/>
 			</p:panelGrid>
 		</p:panel>
 		</fieldset>

@@ -2,6 +2,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
@@ -15,9 +16,9 @@
 
 	<h:outputStylesheet name="css/Style.css" />
 
-</h:head style="background-color: green>
+</h:head>
 
-<body>
+<body style="background-color: green">
 	
 	<center>
 	
@@ -33,13 +34,15 @@
 				<h:inputText id="Descricao" value="#{pecaBean.peca.descricao}" size="50"/>
 				
 				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{pecaBean.peca.valor}"/>
+				<h:inputText id="Valor" value="#{pecaBean.peca.valor}">
+				<f:convertNumber pattern="#,##0.00"/>
+         </h:inputText>
 				
 				<h:outputLabel for="Quantidade" value="Quantidade: "/>
 				<h:inputText id="Quantidade" value="#{pecaBean.peca.quantidade}" size="50"/>
 				
 				<h:outputLabel for="Marca" value="Marca: "/>
-				<h:inputText id="Marca" value="#{PecaBean.peca.marca}" size="50"/>
+				<h:inputText id="Marca" value="#{pecaBean.peca.marca}" size="50"/>
 				
 				<h:commandButton actionListener="#{pecaBean.salvar}" value="Adicionar" styleClass="myButton"/>
 			</h:panelGrid>
@@ -48,8 +51,15 @@
 	
 	</h:form>
 	<p:graphicImage library="image" name="logo.jpg" width="300" />
-	<address>Adelino Gomes Patriota, N° 210, Jupi - PE</address>
 </center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
+					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				</p>
+			</div>
 </body>
 
 </html>

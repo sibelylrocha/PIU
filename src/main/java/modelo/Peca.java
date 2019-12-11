@@ -14,9 +14,8 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.PositiveOrZero;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -31,12 +30,11 @@ public class Peca implements Serializable {
 	@Column(nullable = false)
 	private String Descricao;
 	
-	@NegativeOrZero
-	@NotEmpty
+	@PositiveOrZero
 	@Column
 	private double Valor;
 	
-	@NegativeOrZero
+	@PositiveOrZero
 	@Column
 	private int Quantidade;
 	
