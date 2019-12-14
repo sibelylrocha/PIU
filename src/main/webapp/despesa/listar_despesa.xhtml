@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>DESPESAS PLUS GRÁFICA</title>
+</h:head>
+
+<h:body style="background-color: blue">
+
+<center>
+	<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+	<p:messages id="messages" showDetail="true" />
+
+	<p:dataTable style="width:100%;border:solid 1px white;" 
+			value="#{despesaBean.listaTodos()}" var="despesa">
+			
+			<f:facet name="header">Despesa</f:facet>
+			
+			<p:column headerText="Descricao">
+				<f:facet name="header">Descrição</f:facet>
+				<h:outputText value="#{despesa.descricao}" />
+			</p:column>
+	
+			<p:column headerText="Valor_despesa">
+			<f:facet name="header">Valor_despesa</f:facet>
+				<h:outputText value="#{despesa.valor_despesa}" />
+				<f:convertNumber pattern="#,##0.00"/>
+			</p:column>
+			
+			<p:column headerText="Data_vencimento">
+			<f:facet name="header">Data_vencimento</f:facet>
+				<h:outputText value="#{despesa.data_vencimento}" />
+			</p:column>
+			
+			<p:column headerText="Total_despesa">
+			<f:facet name="header">Total_despesa</f:facet>
+				<h:outputText value="#{despesa.total_despesa}" />
+				<f:convertNumber pattern="#,##0.00"/>
+			</p:column>
+			
+			<p:column headerText="Data">
+			<f:facet name="header">Data</f:facet>
+				<h:outputText value="#{despesa.data}" />
+			</p:column>
+			
+			<p:column headerText="Id">
+			<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{despesa.id}" />
+			</p:column>
+			
+	</p:dataTable>
+	</center>
+	
+	<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+				Praça São Vicente, 01 <br /> Saloá - PE,
+				55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+</html>

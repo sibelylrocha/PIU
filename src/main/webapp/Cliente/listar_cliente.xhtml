@@ -7,41 +7,71 @@
 
 
 <h:head>
-	<title>Todos os clientes</title>
+	<title>CLIENTES PLUS GRÁFICA</title>
 </h:head>
 
-<h:body style="background-color: green">
+<h:body style="background-color: blue">
+
+<center>
+	<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
 	<p:messages id="messages" showDetail="true" />
 
 	<p:dataTable style="width:100%;border:solid 1px black;" 
 			value="#{clienteBean.listaTodos()}" var="cliente">
-	
+			
+			<f:facet name="header">Cliente</f:facet>
+			
 			<p:column headerText="Nome">
 				<f:facet name="header">Nome</f:facet>
 				<h:outputText value="#{cliente.nome}" />
 			</p:column>
 	
-			<p:column headerText="Endereco">
-				<h:outputText value="#{cliente.endereco}" />
+			<p:column headerText="Rua">
+			<f:facet name="header">Rua</f:facet>
+				<h:outputText value="#{cliente.rua}" />
 			</p:column>
-	
+			
+			<p:column headerText="Numero">
+			<f:facet name="header">Numero</f:facet>
+				<h:outputText value="#{cliente.numero}" />
+			</p:column>
+			<p:column headerText="Bairro">
+			<f:facet name="header">Bairro</f:facet>
+				<h:outputText value="#{cliente.bairro}" />
+			</p:column>
+			<p:column headerText="Cep">
+			<f:facet name="header">Cep</f:facet>
+				<h:outputText value="#{cliente.cep}" />
+			</p:column>
+			<p:column headerText="Cidade">
+			<f:facet name="header">Cidade</f:facet>
+				<h:outputText value="#{cliente.cidade}" />
+			</p:column>
+			
+			<p:column headerText="Estado">
+			<f:facet name="header">Estado</f:facet>
+				<h:outputText value="#{cliente.estado}" />
+				
+			</p:column>
 			<p:column headerText="Telefone">
+			<f:facet name="header">Telefone</f:facet>
 				<h:outputText value="#{cliente.telefone}" />
 			</p:column>
 	
 			<p:column headerText="Cpf">
+			<f:facet name="header">Cpf</f:facet>
 				<h:outputText value="#{cliente.cpf}" />
 			</p:column>
+			
 	</p:dataTable>
-	<center>
-	<p:graphicImage library="image" name="logo.jpg" width="300" />
 	</center>
+	
 	<div class="endereco">
 				<h2>ENDEREÇO</h2>
 				<br></br>
 				<p id="Endereco">
-					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
-					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+				Praça São Vicente, 01 <br /> Saloá - PE,
+				55350-000<br /> TELEFONE: (87) 981002573
 				</p>
 			</div>
 </h:body>

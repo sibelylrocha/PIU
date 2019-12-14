@@ -10,7 +10,7 @@
 	<center>
 	
 		<h1>
-			<b>Eletronica do Alexandre</b>
+			<b>CADASTRO PAGAMENTO PLUS GRÁFICA</b>
 		</h1>
 		 
 	</center>
@@ -19,13 +19,12 @@
 
 </h:head>
 
-<h:body style="background-color: green">
+<h:body style="background-color: white">
 
 	<center>
 	
 	
-		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
-
+		<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
 
 	
 
@@ -33,32 +32,36 @@
 		<fieldset>		
 			<p:panel header="Cadastrar Pagamento">
 			<p:panelGrid columns="1">
-				<h:outputLabel for="TipoForma" value="TipoForma: "/>
-				<h:inputText id="TipoForma" value="#{pagamentoBean.pagamento.tipoForma}" size="50"/>
 				
-				<h:outputLabel for="Data" value="Data: "/>
-				<h:inputText id="Data" value="#{pagamentoBean.pagamento.data}" size="50">
-				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-				</h:inputText>
+
+				<h:outputLabel for="Id" value="Id: "/>
+				<h:inputText id="Id" value="#{pagamentoBean.id}" size="50"/>
+				
+				<h:outputLabel for="Forma_pagamento" value="Forma_pagamento: "/>
+				<h:inputText id="Forma_pagamento" value="#{pagamentoBean.despesa}" size="50"/>
+				
+				--FORMA DE PAGAMENTO DEVE TER ESCOLHA ENTRE A VISTA OU A PRAZO
 				
 				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{pagamentoBean.pagamento.valor}">
+				<h:inputText id="Valor" value="#{valorBean.valor_despesa}" size="50"/>
 				<f:convertNumber pattern="#,##0.00"/>
-         		</h:inputText>
 				
-				<h:commandButton actionListener ="#{pagamentoBean.salvar}" value="Adicionar" styleClass="myButton"/>
+				<h:outputLabel for="Num_venda_venda" value="Num_venda_venda: "/>
+				<h:inputText id="Num_venda_venda" value="#{pagamentoBean.Num_venda_venda}" size="50"/>
+					
+				<h:commandButton actionListener ="#{pagamentoBean.salvar()}" value="Adicionar" styleClass="myButton"/>
+				
 			</p:panelGrid>
 		</p:panel>
 		</fieldset>
 	</h:form>
-		<p:graphicImage library="image" name="logo.jpg" width="300" />
 </center>
 <div class="endereco">
 				<h2>ENDEREÇO</h2>
 				<br></br>
 				<p id="Endereco">
-					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
-					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
 				</p>
 			</div>
 </h:body>

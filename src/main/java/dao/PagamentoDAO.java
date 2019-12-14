@@ -10,69 +10,65 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import modelo.Pagamento;
+
+import model.Pagamento;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class PagamentoDAO implements Serializable{
+public class PagamentoDAO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 
-		private DAO<Pagamento> dao;
-		
-		@PersistenceContext(unitName = "Projeto")
-		private EntityManager manager;
-		
-		public PagamentoDAO() {
-			
-		}
+	@PersistenceContext(unitName = "Projeto")
+	private EntityManager manager;
+	
+	private DAO<Pagamento> dao;
+	
+	public PagamentoDAO() {}
+	
+	public PagamentoDAO(EntityManager manager) {
+		this.dao = new DAO<Pagamento>(manager, Pagamento.class);
+	}
+	
+	@PostConstruct
+	private void initDAO() {
+		this.dao = new DAO<Pagamento>(manager, Pagamento.class);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void adiciona(Pagamento t) {
+		dao.adiciona(t);
+	}
 
-		public PagamentoDAO(EntityManager manager){
-			this.dao = new DAO<Pagamento>(manager, Pagamento.class);
-		}
-		
-		@PostConstruct
-		private void initDao() {
-			this.dao = new DAO<Pagamento>(manager, Pagamento.class);
-		}
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void remove(Pagamento t) {
+		dao.remove(t);
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public boolean removePorCodigo(Integer codigo) {
+		String hql = "DELETE FROM Pagamento WHERE codigo = :codigo";
+		Query query = manager.createQuery(hql);
+		query.setParameter("codigo", codigo);
+		int modificados = query.executeUpdate();
+		if(modificados > 0) return true;
+		else return false;
+	}
+	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualiza(Pagamento t) {
+		dao.atualiza(t);
+	}
 
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Cadastrar(Pagamento t) {
-			dao.Cadastrar(t);
-		}
+	public List<Pagamento> listaTodos() {
+		return dao.listaTodos();
+	}
 
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Excluir(Pagamento t) throws Exception{
-			dao.Excluir(t);;
-		}
+	public Pagamento buscaPorCodigo(Integer codigo) {
+		return dao.buscaPorCodigo(codigo);
+	}
 
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void Atualiza(Pagamento t) throws Exception{
-			dao.atualizar(t);
-		}
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public List<Pagamento> listaTodos() {
-			return dao.listaTodos();
-		}
-		
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public Pagamento ConsultarPagamentoPorId(Integer Id) {
-			return dao.ConsultarPagamentoPorId(Id);
-		}
-		public void close() {
-			this.dao.close();
-		}
-		
-		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public boolean removePorId(Integer Id) {
-			String hql = "DELETE FROM Pagamento WHERE Id = :Id";
-			Query query = manager.createQuery(hql);
-			query.setParameter("Id", Id);
-			int modificados = query.executeUpdate();
-			if(modificados > 0) return true;
-			else return false;
-		}
-		
-		public void comitarCache() {
-			dao.comitarCache();
-		}
+	public void comitarCache() {
+		dao.comitarCache();
+	}
 }

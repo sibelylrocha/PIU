@@ -6,11 +6,11 @@
 		
 	<h:head>
 		<center>
-			<h1>Eletronica do Alexandre</h1>
+			<h1>REMOVER VENDA PLUS GRÁFICA</h1>
 		</center>
 	</h:head>
 
-<h:body style="background-color: green">
+<h:body style="background-color: red">
 <center>
 	<fieldset>
 			<h:form>
@@ -19,20 +19,20 @@
 				<h:outputLabel for="Id" value="Id: " />
 				<h:inputText id="Id" value="#{vendaBean.venda.id}" size="50"/>
 
-			<h:commandButton value="Remover" actionListener="#{vendaBean.excluir}" styleClass="myButton"/>
+			<h:commandButton value="Remover" actionListener="#{vendaBean.excluir()}" styleClass="myButton"/>
+					
 			
 			</p:panelGrid>
 			</p:panel>		
 		</h:form>
 	</fieldset>
-	<p:graphicImage library="image" name="logo.jpg" width="300" />
 </center>
 <div class="endereco">
 				<h2>ENDEREÇO</h2>
 				<br></br>
 				<p id="Endereco">
-					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
-					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
 				</p>
 			</div>
 </h:body>

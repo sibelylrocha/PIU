@@ -4,12 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import exception.ValidacaoException;
-import modelo.Cliente;
+import model.Cliente;
 import service.ClienteService;
 
 @Named
@@ -18,7 +20,7 @@ public class ClienteBean implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private Integer Id;
+	private Integer codigo;
 
 	@Inject
 	private Cliente cliente;
@@ -31,19 +33,20 @@ public class ClienteBean implements Serializable {
 	public ClienteBean() {
 	}
 
-	public ClienteBean(Cliente cliente, List<Cliente> lista, Integer Id, ClienteService clService) {
+	public ClienteBean(Cliente cliente, List<Cliente> lista, Integer codigo, ClienteService clService) {
 		this.cliente = cliente;
 		this.lista = lista;
-		this.Id = Id;
+		this.codigo = codigo;
 		this.clService = clService;
 	}
 
-	public Integer getId() {
-		return Id;
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
 	}
 
-	public void setId(Integer Id) {
-		this.Id = Id;
+	
+	public Integer getCodigo() {
+		return codigo;
 	}
 
 	public Cliente getCliente() {
@@ -71,12 +74,16 @@ public class ClienteBean implements Serializable {
 	}
 
 	public void salvar() throws ValidacaoException {
-		clService.cadastarCliente(cliente);
-
+		try {
+			clService.cadastarCliente(cliente);
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cadastro realizalizado com sucesso!"));
+		}catch(ValidacaoException e) {
+			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR, "ERRO", "Ocorreu um erro ao realizar o cadastro!"));
+		}
 	}
 
 	public void excluir() throws Exception {
-		clService.removerCliente(cliente.getId());
+		clService.removerCliente(cliente.getCodigo());
 	}
 
 	public List<Cliente> listaTodos() {
@@ -85,7 +92,7 @@ public class ClienteBean implements Serializable {
 	}
 
 	public void atualizarCliente() throws Exception {
-		clService.atualizarCliente(Id, cliente);
+		clService.atualizarCliente(codigo, cliente);
 	}
 
 }

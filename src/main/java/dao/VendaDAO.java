@@ -10,71 +10,66 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
-import modelo.Venda;
+
+import model.Venda;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
-public class VendaDAO implements Serializable{
+public class VendaDAO implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	
-	private DAO<Venda> dao;
 	@PersistenceContext(unitName = "Projeto")
 	private EntityManager manager;
 	
-	public VendaDAO() {
-		
-	}
-
-	public VendaDAO(EntityManager manager){
+	private DAO<Venda> dao;
+	
+	public VendaDAO() {}
+	
+	public VendaDAO(EntityManager manager) {
 		this.dao = new DAO<Venda>(manager, Venda.class);
 	}
 	
 	@PostConstruct
-	private void initDao() {
+	private void initDAO() {
 		this.dao = new DAO<Venda>(manager, Venda.class);
 	}
-
+	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Cadastrar(Venda t) {
-		System.out.println("oi");
-		dao.Cadastrar(t);
+	public void adiciona(Venda t) {
+		dao.adiciona(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Excluir(Venda t) throws Exception{
-		dao.Excluir(t);;
-	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public List<Venda> listaVendas() {
-		return dao.listaTodos();
+	public void remove(Venda t) {
+		dao.remove(t);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Venda ConsultarVenda(int Id) {
-		return dao.ConsultarVenda(Id);
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Atualiza(Venda t) throws Exception{
-	      dao.atualizar(t);
-	}
-	public void close() {
-		this.dao.close();
-	}
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public boolean removePorId(Integer id) {
-		String hql = "DELETE FROM Usuario WHERE id = :id";
+	public boolean removePorId(Integer codigo) {
+		String hql = "DELETE FROM Venda WHERE codigo = :codigo";
 		Query query = manager.createQuery(hql);
-		query.setParameter("id", id);
+		query.setParameter("codigo", codigo);
 		int modificados = query.executeUpdate();
 		if(modificados > 0) return true;
 		else return false;
 	}
 	
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualiza(Venda t) {
+		dao.atualiza(t);
+	}
+
+	public List<Venda> listaTodos() {
+		return dao.listaTodos();
+	}
+
+	public Venda buscaPorCodigo(Integer codigo) {
+		return dao.buscaPorCodigo(codigo);
+	}
+
 	public void comitarCache() {
 		dao.comitarCache();
 	}
 
 }
-

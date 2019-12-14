@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>CLIENTES PLUS GRÁFICA</title>
+</h:head>
+
+<h:body style="background-color: blue">
+
+<center>
+	<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+	<p:messages id="messages" showDetail="true" />
+
+	<p:dataTable style="width:100%;border:solid 1px white;" 
+			value="#{funcionarioBean.listaTodos()}" var="funcionario">
+			
+			<f:facet name="header">Funcionario</f:facet>
+			
+			<p:column headerText="Nome">
+				<f:facet name="header">Nome</f:facet>
+				<h:outputText value="#{funcionario.nome}" />
+			</p:column>
+	
+			<p:column headerText="Telefone">
+			<f:facet name="header">Telefone</f:facet>
+				<h:outputText value="#{funcionario.telefone}" />
+			</p:column>
+	
+			<p:column headerText="Senha">
+			<f:facet name="header">Senha</f:facet>
+				<h:outputText value="#{funcionario.senha}" />
+			</p:column>
+			
+			<p:column headerText="Saldo_devedor">
+			<f:facet name="header">Saldo_devedor</f:facet>
+				<h:outputText value="#{funcionario.saldo_devedor}" />
+			<f:convertNumber pattern="#,##0.00"/>
+			</p:column>
+			
+			
+			<p:column headerText="Id">
+			<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{funcionario.id}" />
+			</p:column>
+			
+	</p:dataTable>
+	</center>
+	
+	<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+				Praça São Vicente, 01 <br /> Saloá - PE,
+				55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+</html>

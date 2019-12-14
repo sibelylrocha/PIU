@@ -1,5 +1,6 @@
 package dao;
 
+
 import java.io.Serializable;
 import java.util.List;
 
@@ -11,83 +12,64 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import modelo.Cliente;
-
+import model.Cliente;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
 public class ClienteDAO implements Serializable{
+
 	private static final long serialVersionUID = 1L;
-	
+
 	@PersistenceContext(unitName = "Projeto")
 	private EntityManager manager;
 	
 	private DAO<Cliente> dao;
 	
 	public ClienteDAO() {}
-
-	public ClienteDAO (EntityManager manager){
-		dao = new DAO<Cliente>(manager, Cliente.class);
+	
+	public ClienteDAO(EntityManager manager) {
+		this.dao = new DAO<Cliente>(manager, Cliente.class);
 	}
-
+	
 	@PostConstruct
-	private void initDao() {
+	private void initDAO() {
 		this.dao = new DAO<Cliente>(manager, Cliente.class);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Cadastrar(Cliente t) {
-		System.out.println("ola");
-		dao.Cadastrar(t);
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void Remove(Cliente cliente) throws Exception{
-		dao.Excluir(cliente);
+	public void adiciona(Cliente t) {
+		dao.adiciona(t);
 	}
 
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public void atualiza(Cliente t) throws Exception{
-		dao.atualizar(t);
-	}
-
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public List<Cliente> listaTodos() {
-		return dao.listaTodos();
+	public void remove(Cliente t) {
+		dao.remove(t);
 	}
 	
 	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Cliente ConsultarClientePorCpf(String Cpf) {
-		return dao.ConsultarClientePorCpf(Cpf);
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public Cliente BuscaPorId(Integer Id) {
-		return dao.buscaPorId(Id);
-	}
-	
-	@TransactionAttribute(TransactionAttributeType.REQUIRED)
-	public boolean removePorId(Integer Id) {
-		String hql = "DELETE FROM Cliente WHERE Id = :Id";
+	public boolean removePorCodigo(Integer codigo) {
+		String hql = "DELETE FROM Cliente WHERE codigo = :codigo";
 		Query query = manager.createQuery(hql);
-		query.setParameter("Id", Id);
+		query.setParameter("codigo", codigo);
 		int modificados = query.executeUpdate();
 		if(modificados > 0) return true;
 		else return false;
 	}
-	public Cliente retornarPorId(Integer Id){
-        String sql = "FROM "+Cliente.class.getName()+" WHERE Id = :Id";
-        Query query = this.manager.createQuery(sql);
-        query.setParameter("Id", Id);
-        
-        return (Cliente) query.getSingleResult();
-    }
 	
-	public void close() {
-		this.dao.close();
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
+	public void atualiza(Cliente t) {
+		dao.atualiza(t);
 	}
+
+	public List<Cliente> listaTodos() {
+		return dao.listaTodos();
+	}
+
+	public Cliente buscaPorCodigo(Integer codigo) {
+		return dao.buscaPorCodigo(codigo);
+	}
+
 	public void comitarCache() {
 		dao.comitarCache();
 	}
-
 }

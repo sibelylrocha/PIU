@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<title>ITENS PLUS GRÁFICA</title>
+</h:head>
+
+<h:body style="background-color: blue">
+
+<center>
+	<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+	<p:messages id="messages" showDetail="true" />
+
+	<p:dataTable style="width:100%;border:solid 1px white;" 
+			value="#{itemBean.listaTodos()}" var="item">
+			
+			<f:facet name="header">Item</f:facet>
+			
+			<p:column headerText="Descricao">
+				<f:facet name="header">Descrição</f:facet>
+				<h:outputText value="#{item.descricao}" />
+			</p:column>
+	
+			<p:column headerText="Tipo">
+			<f:facet name="header">Tipo</f:facet>
+				<h:outputText value="#{item.tipo}" />
+			</p:column>
+			
+			<p:column headerText="Valor_item">
+			<f:facet name="header">Valor_item</f:facet>
+				<h:outputText value="#{item.valor_item}" />
+			<f:convertNumber pattern="#,##0.00"/>
+			</p:column>
+			
+			
+			<p:column headerText="Id">
+			<f:facet name="header">Id</f:facet>
+				<h:outputText value="#{item.id}" />
+			</p:column>
+			
+	</p:dataTable>
+	</center>
+	
+	<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+				Praça São Vicente, 01 <br /> Saloá - PE,
+				55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+</html>

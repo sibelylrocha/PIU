@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<center>
+	
+		<h1>
+			<b>PLUS GRÁFICA</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+
+<h:body style="background-color: white">
+
+	<center>
+	
+	
+		<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+
+
+	
+
+	<h:form>
+		<fieldset>		
+			<p:panel header="Cadastrar Funcionario">
+			<p:panelGrid columns="1">
+				<h:outputLabel for="Nome" value="Nome: "/>
+				<h:inputText id="Nome" value="#{funcionarioBean.funcionario.nome}" size="50"/>
+				
+				<h:outputLabel for="Senha" value="Senha: "/>
+				<h:inputText id="Senha" value="#{funcionarioBean.funcionario.senha}" size="50"/>
+				
+				<h:outputLabel for="Saldo_devedor" value="Saldo_devedor: "/>
+				<h:inputText id="Saldo_devedor" value="#{funcionarioBean.funcionario.saldo_devedor}" size="50"/>
+				<f:convertNumber pattern="#,##0.00"/>
+				
+				<h:outputLabel for="Telefone" value="Telefone: "/>
+				<h:inputText id="Telefone" value="#{funcionarioBean.funcionario.telefone}" size="50"/>
+				
+				<h:commandButton actionListener ="#{funcionarioBean.salvar()}" value="Adicionar" styleClass="myButton"/>
+				
+			</p:panelGrid>
+		</p:panel>
+		</fieldset>
+	</h:form>
+</center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:p="http://primefaces.org/ui">
+		
+	<h:head>
+		<center>
+			<h1>REMOVER FUNCIONARIO PLUS GRÁFICA</h1>
+		</center>
+	</h:head>
+
+<h:body style="background-color: red">
+<center>
+	<fieldset>
+			<h:form>
+			<p:panel header="Remover Funcionario">
+			<p:panelGrid columns="2">
+				<h:outputLabel for="Id" value="Id: " />
+				<h:inputText id="Id" value="#{funcionarioBean.funcionario.id}" size="50"/>
+
+			<h:commandButton value="Remover" actionListener="#{funcionarioBean.excluir()}" styleClass="myButton"/>
+			
+			
+			
+			</p:panelGrid>
+			</p:panel>		
+		</h:form>
+	</fieldset>
+</center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+</html>

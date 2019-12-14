@@ -17,7 +17,7 @@ import javax.validation.ValidatorFactory;
 import dao.ClienteDAO;
 import dto.ViolacoesValidacao;
 import exception.ValidacaoException;
-import modelo.Cliente;
+import model.Cliente;
 
 @Stateless
 @TransactionAttribute(TransactionAttributeType.SUPPORTS)
@@ -32,20 +32,16 @@ public class ClienteService implements Serializable{
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
 		public void cadastarCliente(Cliente cliente) throws ValidacaoException{
 			validaCliente(cliente);
-			dao.Cadastrar(cliente);
+			dao.adiciona(cliente);
 		}
 
 		public List<Cliente> listarCliente() {
 			return dao.listaTodos();
 		}
 
-		public Cliente getClientePorCpf(String Cpf) {
-			return dao.ConsultarClientePorCpf(Cpf);
-		}
-
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public boolean removerCliente(Integer Id) {
-			boolean resultado = dao.removePorId(Id);
+		public boolean removerCliente(Integer Codigo) {
+			boolean resultado = dao.removePorCodigo(Codigo);
 			dao.comitarCache();
 			return resultado;
 		}
@@ -56,9 +52,9 @@ public class ClienteService implements Serializable{
 		}
 		
 		@TransactionAttribute(TransactionAttributeType.REQUIRED)
-		public void atualizarCliente(Integer Id, Cliente cliente) throws Exception {
+		public void atualizarCliente(Integer Codigo, Cliente cliente) throws Exception {
 			Cliente clientemodificado = cliente;
-			clientemodificado.setId(Id);
+			clientemodificado.setCodigo(Codigo);
 			//clienteDoBanco.atualizarCampos(cliente);
 			dao.atualiza(clientemodificado);
 			dao.comitarCache();

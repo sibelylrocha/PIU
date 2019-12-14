@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
 
 <h:head>
 	<center>
 	
 		<h1>
-			<b>Eletronica do Alexandre</b>
+			<b>CADASTRO VENDA PLUS GRÁFICA</b>
 		</h1>
 		 
 	</center>
@@ -18,45 +19,51 @@
 
 </h:head>
 
-<body style="background-color: green">
-		<center>
-	
-	
-		<p:graphicImage library="image" name="padrinho.jpg" width="150" height="150"/>
+<h:body style="background-color: white">
 
-		
-	<h:form>		
-		<fieldset>
+	<center>
+	
+	
+		<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+
+	
+
+	<h:form>
+		<fieldset>		
 			<p:panel header="Cadastrar Venda">
-			
-			<h:panelGrid columns="2">
-			
-				<h:outputLabel for="Data" value="Data: "/>
-				<h:inputText id="Data" value="#{vendaBean.venda.data}" size="50">
-				<f:convertDateTime pattern="dd/MM/yyyy HH:mm" />
-				</h:inputText>
+			<p:panelGrid columns="1">
 				
-				<h:outputLabel for="Valor" value="Valor: "/>
-				<h:inputText id="Valor" value="#{vendaBean.venda.valor}" size="50">
+
+				<h:outputLabel for="Id" value="Id: "/>
+				<h:inputText id="Id" value="#{vendaBean.id}" size="50"/>
+				
+				
+				<h:outputLabel for="Desconto" value="Desconto: "/>
+				<h:inputText id="Desconto" value="#{vendaBean.venda}" size="50"/>
 				<f:convertNumber pattern="#,##0.00"/>
-         </h:inputText>
 				
-				<h:commandButton actionListener="#{vendaBean.salvar}" value="Adicionar" styleClass="myButton"/>
-			</h:panelGrid>	
-			</p:panel>
+				<h:outputLabel for="Valor_total" value="Valor_total: "/>
+				<h:inputText id="Valor_total" value="#{vendaBean.valor_total}" size="50"/>
+				<f:convertNumber pattern="#,##0.00"/>
+				
+				<h:outputLabel for="Data" value="Data: "/>
+				<h:inputText id="Data" value="#{vendaBean.venda}" size="50"/>
+					
+				<h:commandButton actionListener ="#{vendaBean.salvar()}" value="Adicionar" styleClass="myButton"/>
+				
+			</p:panelGrid>
+		</p:panel>
 		</fieldset>
 	</h:form>
-	<p:graphicImage library="image" name="logo.jpg" width="300" />
 </center>
-	<div class="endereco">
+<div class="endereco">
 				<h2>ENDEREÇO</h2>
 				<br></br>
 				<p id="Endereco">
-					Av. Boa Vista, 185 - Adelino Gomes Patriota<br /> Jupi - PE,
-					55395-000<br /> TELEFONE: (87) 98122-7584 | (87) 98101-4265
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
 				</p>
 			</div>
-
-</body>
+</h:body>
 
 </html>

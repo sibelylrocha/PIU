@@ -3,17 +3,16 @@
 	<persistence-unit name="Projeto" transaction-type="JTA">
 		
 		<jta-data-source>java:/Projeto</jta-data-source>
-		<class>modelo.Cliente</class>
-		<class>modelo.Empresa</class>
-		<class>modelo.Estoque</class>
-		<class>modelo.OrdemServico</class>
-		<class>modelo.Pagamento</class>
-		<class>modelo.Peca</class>
-		<class>modelo.ProblemaRelatado</class>
-		<class>modelo.Produto</class>
-		<class>modelo.Venda</class>
 		
+		<class>model.Funcionario</class>
+		<class>model.Cliente</class>
+		<class>model.Endereco</class>
+		<class>model.Despesa</class>
+		<class>model.Intem</class>
+		<class>model.Pagamento</class>
+		<class>model.Venda</class>
 		<properties>
+	
 			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQL9Dialect" />
             <property name="hibernate.archive.autodetection" value="class"/>
             <property name="hibernate.show_sql" value="true"/>

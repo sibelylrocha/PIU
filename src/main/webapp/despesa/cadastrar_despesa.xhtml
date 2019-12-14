@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+		xmlns:h="http://java.sun.com/jsf/html"
+		xmlns:f="http://xmlns.jcp.org/jsf/core"
+		xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<center>
+	
+		<h1>
+			<b>CADASTRO DESPESA PLUS GRÁFICA</b>
+		</h1>
+		 
+	</center>
+
+	<h:outputStylesheet name="css/Style.css" />
+
+</h:head>
+
+<h:body style="background-color: white">
+
+	<center>
+	
+	
+		<p:graphicImage library="image" name="plusgrafica.jpg" width="200" height="200"/>
+
+	
+
+	<h:form>
+		<fieldset>		
+			<p:panel header="Cadastrar Despesa">
+			<p:panelGrid columns="1">
+				
+
+				<h:outputLabel for="Descricao" value="Descricao: "/>
+				<h:inputText id="Descricao" value="#{despesaBean.despesa}" size="50"/>
+				
+				
+				<h:outputLabel for="Valor_despesa" value="Valor_despesa: "/>
+				<h:inputText id="Valor_despesa" value="#{despesaBean.valor_despesa}" size="50"/>
+				<f:convertNumber pattern="#,##0.00"/>
+				
+				<h:outputLabel for="Total_despesa" value="Total_despesa: "/>
+				<h:inputText id="Total_despesa" value="#{despesaBean.total_despesa}" size="50"/>
+				<f:convertNumber pattern="#,##0.00"/>
+				
+				<h:outputLabel for="Data_vencimento" value="Data_vencimento: "/>
+				<h:inputText id="Data_vencimento" value="#{despesaBean.data_vencimento}" size="50"/>
+				
+				<h:outputLabel for="Data" value="Data: "/>
+				<h:inputText id="Data" value="#{despesaBean.data}" size="50"/>
+					
+				<h:commandButton actionListener ="#{despesaBean.salvar()}" value="Adicionar" styleClass="myButton"/>
+				
+			</p:panelGrid>
+		</p:panel>
+		</fieldset>
+	</h:form>
+</center>
+<div class="endereco">
+				<h2>ENDEREÇO</h2>
+				<br></br>
+				<p id="Endereco">
+					Praça São Vicente, 01 <br /> Saloá - PE,
+					55350-000<br /> TELEFONE: (87) 981002573
+				</p>
+			</div>
+</h:body>
+
+</html>
